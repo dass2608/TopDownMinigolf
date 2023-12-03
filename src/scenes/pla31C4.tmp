@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsssiws2q2gam"]
+
+[ext_resource type="Script" path="res://src/scripts/player.gd" id="1_b7abl"]
+[ext_resource type="Texture2D" uid="uid://cee8jr64n4n20" path="res://assets/Ball.png" id="1_elppw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km4io"]
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tb3ds"]
+radius = 129.035
+
+[node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_km4io")
+gravity_scale = 0.0
+script = ExtResource("1_b7abl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_elppw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.15, 0.15)
+shape = SubResource("CircleShape2D_tb3ds")

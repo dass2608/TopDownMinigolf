@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqyfxlpsw7r3g"]
+
+[ext_resource type="Texture2D" uid="uid://d0dtvdddilvuo" path="res://assets/hole.svg" id="1_bn1dg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ynnk"]
+radius = 12.0416
+
+[node name="Hole" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_bn1dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ynnk")

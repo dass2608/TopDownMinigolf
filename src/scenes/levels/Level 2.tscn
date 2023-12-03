@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdge32nsm3war"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="4_adtdk"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(277, 125)
+
+[node name="Testlevel" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(326, 174)
+
+[node name="Testlevel2" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(227, 124)
+
+[node name="Testlevel3" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(227, 174)
+
+[node name="Testlevel4" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(277, 174)
+
+[node name="Testlevel5" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(326, 125)
+
+[node name="Testlevel6" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(227, 75)
+
+[node name="Testlevel7" parent="." instance=ExtResource("4_adtdk")]
+position = Vector2(227, 25)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

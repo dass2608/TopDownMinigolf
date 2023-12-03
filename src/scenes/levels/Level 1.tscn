@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq2ih6jvtm8y0"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_dc887"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="2_o6gkl"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="3_34xct"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_dc887")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Pillar" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(475, 224)
+
+[node name="Pillar2" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(425, 224)
+
+[node name="Pillar3" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(375, 224)
+
+[node name="Pillar4" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(325, 224)
+
+[node name="Pillar5" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(525, 224)
+
+[node name="Pillar6" parent="." instance=ExtResource("2_o6gkl")]
+position = Vector2(525, 174)
+
+[node name="Hole" parent="." instance=ExtResource("3_34xct")]
+position = Vector2(426, 174)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

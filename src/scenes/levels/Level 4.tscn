@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1v4tnmlb54nc"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="4_tbmke"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(23, 373)
+
+[node name="Testlevel" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(625, 374)
+
+[node name="Testlevel2" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(576, 374)
+
+[node name="Testlevel3" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(426, 476)
+
+[node name="Testlevel4" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(476, 475)
+
+[node name="Testlevel5" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(526, 475)
+
+[node name="Testlevel6" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(576, 475)
+
+[node name="Testlevel7" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(626, 475)
+
+[node name="Testlevel8" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(427, 374)
+
+[node name="Testlevel9" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(477, 374)
+
+[node name="Testlevel10" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(527, 374)
+
+[node name="Testlevel11" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(376, 375)
+
+[node name="Testlevel12" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(327, 375)
+
+[node name="Testlevel13" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(177, 477)
+
+[node name="Testlevel14" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(227, 476)
+
+[node name="Testlevel15" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(277, 476)
+
+[node name="Testlevel16" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(327, 476)
+
+[node name="Testlevel17" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(377, 476)
+
+[node name="Testlevel18" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(178, 375)
+
+[node name="Testlevel19" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(228, 375)
+
+[node name="Testlevel20" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(278, 375)
+
+[node name="Testlevel21" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(76, 325)
+
+[node name="Testlevel25" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(25, 326)
+
+[node name="Testlevel22" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(25, 474)
+
+[node name="Testlevel23" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(75, 374)
+
+[node name="Testlevel24" parent="." instance=ExtResource("4_tbmke")]
+position = Vector2(126, 374)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

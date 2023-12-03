@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj6iaal24m85y"]
+
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_bvpyx"]
+[ext_resource type="Script" path="res://src/scripts/game.gd" id="1_jh14k"]
+[ext_resource type="PackedScene" uid="uid://csh2a4hn0ibfa" path="res://src/scenes/player.tscn" id="3_4fb2v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjeur"]
+bounce = 0.9
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kly25"]
+a = Vector2(-576.5, -322.5)
+b = Vector2(575.5, -322.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_23u8e"]
+b = Vector2(-1, 649)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_jh14k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_bvpyx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fjeur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.5, 323.5)
+shape = SubResource("SegmentShape2D_kly25")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.5, 970.5)
+shape = SubResource("SegmentShape2D_kly25")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_23u8e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1153, 0)
+shape = SubResource("SegmentShape2D_23u8e")
+
+[node name="Player" parent="." instance=ExtResource("3_4fb2v")]
+z_index = 100
+position = Vector2(676, 374)
+
+[node name="LabelShots" type="Label" parent="."]
+z_index = 99
+offset_top = 602.0
+offset_right = 122.0
+offset_bottom = 650.0
+theme_override_font_sizes/font_size = 32
+text = "Shots: 0"

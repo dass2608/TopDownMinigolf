@@ -1,0 +1,212 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt2ji5sldefe3"]
+
+[ext_resource type="Texture2D" uid="uid://cxoq32by4sq7v" path="res://assets/menu-background.svg" id="1_0fhw5"]
+[ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_cyvbu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cyvbu")
+
+[node name="MenuItems" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="MenuItems"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_0fhw5")
+
+[node name="LabelTitle" type="Label" parent="MenuItems"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 196.0
+offset_top = 83.0
+offset_right = 920.0
+offset_bottom = 196.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+text = "Top Down Minigolf"
+
+[node name="LabelLevelComplete" type="Label" parent="MenuItems"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 234.0
+offset_right = 734.0
+offset_bottom = 276.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="ButtonPlay" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 303.0
+offset_right = 598.0
+offset_bottom = 383.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 52
+text = "Play"
+flat = true
+
+[node name="PanelLevelselect" type="Panel" parent="MenuItems"]
+visible = false
+layout_mode = 0
+offset_left = 124.0
+offset_top = 87.0
+offset_right = 1015.0
+offset_bottom = 589.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuItems/PanelLevelselect"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 886.0
+offset_bottom = 499.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuItems/PanelLevelselect/ScrollContainer"]
+layout_mode = 2
+
+[node name="ButtonAboutCredits" type="Button" parent="MenuItems"]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 617.0
+offset_right = 1153.0
+offset_bottom = 648.0
+text = "About and Licences"
+
+[node name="Credits" type="Panel" parent="MenuItems"]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 1129.0
+offset_bottom = 627.0
+
+[node name="MainScreen" type="Control" parent="MenuItems/Credits"]
+anchors_preset = 0
+offset_right = 1111.0
+offset_bottom = 610.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuItems/Credits/MainScreen"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 1089.0
+offset_bottom = 607.0
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[b]TopDownMinigolf[/b]
+a game by dass2608
+[url]github.com/dass2608/TopDownMinigolf[/url]
+This Program is released under the GNU General Public License v3.0. For more info see [url]github.com/dass2608/TopDownMinigolf/blob/main/LICENSE[/url].
+
+[b]Thrid Party Credits:[/b]
+[b]Godot Engine:[/b] see [url]godotengine.org/license/[/url]
+[b]FreeType:[/b] Portions of this software are copyright © 2022 The FreeType Project (www.freetype.org). All rights reserved.
+[b]ENet[/b] see 
+[b]mbed TLS[/b] see"
+
+[node name="ButtonENet" type="Button" parent="MenuItems/Credits/MainScreen"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 349.0
+offset_right = 176.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 24
+text = "here"
+flat = true
+
+[node name="ButtonmbedTLS" type="Button" parent="MenuItems/Credits/MainScreen"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 384.0
+offset_right = 238.0
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 24
+text = "here"
+flat = true
+
+[node name="ButtonMainScreenBack" type="Button" parent="MenuItems/Credits/MainScreen"]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 535.0
+offset_right = 579.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 40
+text = "Back"
+flat = true
+
+[node name="ENet" type="Control" parent="MenuItems/Credits"]
+visible = false
+anchors_preset = 0
+offset_right = 1110.0
+offset_bottom = 617.0
+
+[node name="Label" type="Label" parent="MenuItems/Credits/ENet"]
+layout_mode = 0
+offset_right = 1110.0
+offset_bottom = 338.0
+text = "Copyright (c) 2002-2020 Lee Salzman
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+autowrap_mode = 3
+
+[node name="ButtonBack" type="Button" parent="MenuItems/Credits/ENet"]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 535.0
+offset_right = 579.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 40
+text = "Back"
+flat = true
+
+[node name="mbedTLS" type="Control" parent="MenuItems/Credits"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1110.0
+offset_bottom = 617.0
+
+[node name="Label" type="Label" parent="MenuItems/Credits/mbedTLS"]
+layout_mode = 0
+offset_right = 1110.0
+offset_bottom = 338.0
+text = "Copyright The Mbed TLS Contributors
+
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+autowrap_mode = 3
+
+[node name="ButtonBack" type="Button" parent="MenuItems/Credits/mbedTLS"]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 535.0
+offset_right = 566.0
+offset_bottom = 598.0
+theme_override_font_sizes/font_size = 40
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="MenuItems/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MenuItems/ButtonAboutCredits" to="." method="_on_button_about_credits_pressed"]
+[connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonENet" to="." method="_on_button_e_net_pressed"]
+[connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonmbedTLS" to="." method="_on_buttonmbed_tls_pressed"]
+[connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonMainScreenBack" to="." method="_on_button_main_screen_back_pressed"]
+[connection signal="pressed" from="MenuItems/Credits/ENet/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="MenuItems/Credits/mbedTLS/ButtonBack" to="." method="_on_button_back_pressed"]
