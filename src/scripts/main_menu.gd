@@ -25,7 +25,7 @@ func _ready():
 	var levelArray = getLevelArray()
 	for i in levelArray:
 		var buttonNode = load("res://src/scenes/level_button.tscn").instantiate()
-		buttonNode.text = i.trim_suffix(".tscn")
+		buttonNode.text = i.split(".", false, 1)[0]
 		buttonNode.add_theme_font_size_override(&"font_size", 32)
 		buttonNode.flat = true
 		buttonNode.connect(&"selected", _levelSelected)
