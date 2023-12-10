@@ -13,13 +13,17 @@ func _input(event):
 #	print("[INPUT] game.gd _unhandled_input: ", event)
 	if event is InputEventMouseButton:
 		if event.is_pressed():
+			var mask = event.button_mask
+			var isLeftClicked = mask & MOUSE_BUTTON_MASK_LEFT
+			print("Mousclick! Mask: ", mask, "; Leftclick? = ", isLeftClicked > 0)
+			if isLeftClicked == 0: return
 			mousePosition = get_local_mouse_position()
 			mousePressed = true
+			shots += 1
 			$LabelShots.text = "Shots: " + str(shots)
 		elif event.is_released() and mousePressed:
 			var mouseReleasePosition:Vector2 = get_local_mouse_position()
 			$Player.apply_impulse((mousePosition - mouseReleasePosition) * 2)
-			shots += 1
 			mousePressed = false
 
 func loadLevel(levelName:String):
