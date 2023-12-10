@@ -1,0 +1,335 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvk2i1qj7ijv8"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="3_k8x8r"]
+[ext_resource type="PackedScene" uid="uid://bhtkn7x115y05" path="res://src/scenes/levelComponents/DarkbluePillar.tscn" id="3_pb2qk"]
+[ext_resource type="PackedScene" uid="uid://c04mug5us1vsn" path="res://src/scenes/levelComponents/AccelerationPad.tscn" id="4_is0kj"]
+[ext_resource type="PackedScene" uid="uid://dj4nnvdrofh8b" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="4_pu8jg"]
+[ext_resource type="PackedScene" uid="uid://cggltka4es1ft" path="res://src/scenes/levelComponents/BlackPillar.tscn" id="6_0uvup"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="MovablePillars" type="Node2D" parent="."]
+
+[node name="StickyPillar" parent="MovablePillars" instance=ExtResource("3_pb2qk")]
+position = Vector2(949, 76)
+
+[node name="StickyPillar2" parent="MovablePillars" instance=ExtResource("3_pb2qk")]
+position = Vector2(949, 26)
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="NormalPillar" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(827, 125)
+
+[node name="NormalPillar2" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(776, 125)
+
+[node name="NormalPillar3" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(726, 125)
+
+[node name="NormalPillar23" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(949, 125)
+
+[node name="NormalPillar24" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(927, 125)
+
+[node name="NormalPillar25" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(877, 125)
+
+[node name="NormalPillar4" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(726, 224)
+
+[node name="NormalPillar33" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(685, 276)
+
+[node name="NormalPillar35" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 224)
+
+[node name="NormalPillar26" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(726, 176)
+
+[node name="NormalPillar5" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(726, 274)
+
+[node name="NormalPillar6" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 324)
+
+[node name="NormalPillar7" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 374)
+
+[node name="NormalPillar42" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 423)
+
+[node name="NormalPillar43" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 473)
+
+[node name="NormalPillar44" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 523)
+
+[node name="NormalPillar45" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 573)
+
+[node name="NormalPillar46" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(727, 623)
+
+[node name="NormalPillar16" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 125)
+
+[node name="NormalPillar21" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 28)
+
+[node name="NormalPillar22" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 78)
+
+[node name="NormalPillar17" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 174)
+
+[node name="NormalPillar18" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 224)
+
+[node name="NormalPillar19" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 274)
+
+[node name="NormalPillar20" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 324)
+
+[node name="NormalPillar8" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(776, 374)
+
+[node name="NormalPillar9" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(826, 374)
+
+[node name="NormalPillar10" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(876, 374)
+
+[node name="NormalPillar11" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(926, 374)
+
+[node name="NormalPillar12" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(977, 374)
+
+[node name="NormalPillar13" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1027, 374)
+
+[node name="NormalPillar14" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1077, 374)
+
+[node name="NormalPillar15" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(1127, 374)
+
+[node name="NormalPillar49" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(274, 475)
+
+[node name="NormalPillar62" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(226, 474)
+
+[node name="NormalPillar50" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(324, 475)
+
+[node name="NormalPillar51" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(375, 475)
+
+[node name="NormalPillar52" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(425, 475)
+
+[node name="NormalPillar53" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(475, 475)
+
+[node name="NormalPillar54" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(525, 475)
+
+[node name="AccelerationPad" parent="Pillars" instance=ExtResource("4_is0kj")]
+position = Vector2(1026, 225)
+
+[node name="NormalPillar27" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 125)
+
+[node name="NormalPillar28" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 174)
+
+[node name="NormalPillar36" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 373)
+
+[node name="NormalPillar37" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 274)
+
+[node name="NormalPillar38" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 323)
+
+[node name="NormalPillar39" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 473)
+
+[node name="NormalPillar41" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(619, 474)
+
+[node name="NormalPillar55" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(274, 623)
+
+[node name="NormalPillar56" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(324, 623)
+
+[node name="NormalPillar57" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(375, 623)
+
+[node name="NormalPillar58" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(425, 623)
+
+[node name="NormalPillar59" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(475, 623)
+
+[node name="NormalPillar63" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 623)
+
+[node name="NormalPillar64" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(126, 623)
+
+[node name="NormalPillar65" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(176, 623)
+
+[node name="NormalPillar66" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(226, 623)
+
+[node name="NormalPillar60" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(525, 623)
+
+[node name="NormalPillar47" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(577, 623)
+
+[node name="NormalPillar48" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(626, 623)
+
+[node name="NormalPillar80" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(675, 623)
+
+[node name="NormalPillar40" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(576, 423)
+
+[node name="NormalPillar67" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 325)
+
+[node name="NormalPillar68" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 225)
+
+[node name="NormalPillar69" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 275)
+
+[node name="NormalPillar70" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 477)
+
+[node name="NormalPillar71" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 376)
+
+[node name="NormalPillar75" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 125)
+
+[node name="NormalPillar76" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 26)
+
+[node name="NormalPillar77" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 75)
+
+[node name="NormalPillar78" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 175)
+
+[node name="NormalPillar72" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 427)
+
+[node name="NormalPillar81" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(225, 325)
+
+[node name="NormalPillar82" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(225, 275)
+
+[node name="NormalPillar83" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(225, 376)
+
+[node name="NormalPillar84" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(225, 427)
+
+[node name="NormalPillar73" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 577)
+
+[node name="NormalPillar74" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(75, 527)
+
+[node name="NormalPillar29" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(526, 175)
+
+[node name="NormalPillar30" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(399, -15)
+
+[node name="NormalPillar79" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(228, -10)
+
+[node name="NormalPillar31" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(320, 143)
+
+[node name="NormalPillar61" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(225, 224)
+
+[node name="NormalPillar32" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(476, 224)
+
+[node name="NormalPillar34" parent="Pillars" instance=ExtResource("3_k8x8r")]
+position = Vector2(535, 155)
+
+[node name="StickyPillar4" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(377, 225)
+
+[node name="StickyPillar11" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(427, 210)
+
+[node name="StickyPillar5" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(327, 225)
+
+[node name="StickyPillar12" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(275, 224)
+
+[node name="StickyPillar6" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(277, 175)
+
+[node name="StickyPillar7" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(276, 125)
+
+[node name="StickyPillar8" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(233, 75)
+
+[node name="StickyPillar9" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(276, 24)
+
+[node name="StickyPillar10" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(125, -10)
+
+[node name="StickyPillar13" parent="Pillars" instance=ExtResource("6_0uvup")]
+position = Vector2(177, -10)
+
+[node name="AccelerationPad2" parent="Pillars" instance=ExtResource("4_is0kj")]
+position = Vector2(627, 26)
+
+[node name="AccelerationPad3" parent="Pillars" instance=ExtResource("4_is0kj")]
+position = Vector2(627, 74)
+
+[node name="AccelerationPad4" parent="Pillars" instance=ExtResource("4_is0kj")]
+position = Vector2(174, 224)
+
+[node name="AccelerationPad5" parent="Pillars" instance=ExtResource("4_is0kj")]
+position = Vector2(125, 224)
+
+[node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
+position = Vector2(827, 276)
+scale = Vector2(3, 3)
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(225, 176)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

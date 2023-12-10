@@ -14,6 +14,8 @@ offset_right = 1154.0
 offset_bottom = 648.0
 texture = ExtResource("1_ihogm")
 
+[node name="MovablePillars" type="Node2D" parent="."]
+
 [node name="Pillars" type="Node2D" parent="."]
 
 [node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
