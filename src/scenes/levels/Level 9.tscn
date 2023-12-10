@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7hojko65gg7u"]
+[gd_scene load_steps=8 format=3 uid="uid://b7hojko65gg7u"]
 
 [ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
 [ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cggltka4es1ft" path="res://src/scenes/levelComponents/BlackPillar.tscn" id="4_8rvmy"]
 [ext_resource type="PackedScene" uid="uid://c04mug5us1vsn" path="res://src/scenes/levelComponents/AccelerationPad.tscn" id="5_dsvod"]
 [ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="6_0eqlh"]
+[ext_resource type="PackedScene" uid="uid://dj4nnvdrofh8b" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="7_6b7ms"]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_ehgcq")
@@ -118,5 +119,8 @@ position = Vector2(77, 573)
 
 [node name="Testlevel15" parent="Pillars" instance=ExtResource("6_0eqlh")]
 position = Vector2(77, 473)
+
+[node name="PlayerStartPosition" parent="." instance=ExtResource("7_6b7ms")]
+position = Vector2(726, 476)
 
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

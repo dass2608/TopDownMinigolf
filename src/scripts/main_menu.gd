@@ -14,14 +14,19 @@ func getLevelArray() -> Array[String]:
 				if filename.begins_with(".") or filename.begins_with("_"): continue
 				files.push_back(filename)
 			filename = dir.get_next()
+#		print(files)
+		files.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+#		print(files)
 		return files
 	else:
 		push_error("Unable to read levels!")
 		get_tree().quit(1)
 		return []
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	var levelArray = getLevelArray()
 	for i in levelArray:
 		var buttonNode = load("res://src/scenes/level_button.tscn").instantiate()

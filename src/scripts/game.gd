@@ -22,6 +22,8 @@ func _input(event):
 func loadLevel(levelName:String):
 	var level = load("res://src/scenes/levels/" + levelName).instantiate()
 	level.connect(&"nextLevel", _onLevelCompleted)
+	if level.has_node("PlayerStartPosition"):
+		$Player.position = level.get_node("PlayerStartPosition").position
 	add_child(level)
 	levelname = levelName
 

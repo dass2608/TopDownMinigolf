@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=3 uid="uid://5is3yfnp2hie"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://cggltka4es1ft" path="res://src/scenes/levelComponents/BlackPillar.tscn" id="3_y21ff"]
+[ext_resource type="PackedScene" uid="uid://dj4nnvdrofh8b" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="4_pu8jg"]
+[ext_resource type="PackedScene" uid="uid://c04mug5us1vsn" path="res://src/scenes/levelComponents/AccelerationPad.tscn" id="4_sc6ir"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="5_hc2ks"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="StickyPillar" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(427, 274)
+
+[node name="StickyPillar2" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(377, 274)
+
+[node name="StickyPillar3" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(327, 274)
+
+[node name="StickyPillar4" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(327, 226)
+
+[node name="StickyPillar5" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(327, 176)
+
+[node name="StickyPillar6" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(327, 126)
+
+[node name="StickyPillar7" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(327, 76)
+
+[node name="StickyPillar8" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(377, 76)
+
+[node name="StickyPillar9" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(426, 76)
+
+[node name="StickyPillar10" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(475, 76)
+
+[node name="StickyPillar12" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(526, 76)
+
+[node name="StickyPillar13" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(576, 76)
+
+[node name="StickyPillar14" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(625, 76)
+
+[node name="StickyPillar15" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(675, 76)
+
+[node name="StickyPillar16" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(527, 274)
+
+[node name="StickyPillar17" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(577, 274)
+
+[node name="StickyPillar18" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(626, 274)
+
+[node name="StickyPillar19" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(675, 274)
+
+[node name="StickyPillar11" parent="Pillars" instance=ExtResource("3_y21ff")]
+position = Vector2(477, 274)
+
+[node name="AccelerationPad" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(826, 324)
+
+[node name="AccelerationPad2" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(777, 324)
+
+[node name="AccelerationPad3" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(876, 325)
+
+[node name="AccelerationPad4" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(826, 275)
+
+[node name="AccelerationPad5" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(777, 275)
+
+[node name="AccelerationPad6" parent="Pillars" instance=ExtResource("4_sc6ir")]
+position = Vector2(876, 276)
+
+[node name="NormalPillar" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(725, 323)
+
+[node name="NormalPillar2" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(726, 375)
+
+[node name="NormalPillar3" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(726, 425)
+
+[node name="NormalPillar4" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(727, 474)
+
+[node name="NormalPillar5" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 325)
+
+[node name="NormalPillar6" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 375)
+
+[node name="NormalPillar7" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 425)
+
+[node name="NormalPillar8" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 474)
+
+[node name="NormalPillar9" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 127)
+
+[node name="NormalPillar10" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 177)
+
+[node name="NormalPillar13" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(927, 27)
+
+[node name="NormalPillar14" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 77)
+
+[node name="NormalPillar11" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 227)
+
+[node name="NormalPillar12" parent="Pillars" instance=ExtResource("5_hc2ks")]
+position = Vector2(926, 276)
+
+[node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
+position = Vector2(777, 424)
+scale = Vector2(3, 3)
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(426, 178)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]
