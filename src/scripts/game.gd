@@ -14,7 +14,7 @@ func _input(event):
 			mousePressed = true
 			shots += 1
 			$LabelShots.text = "Shots: " + str(shots)
-		elif event.is_released():
+		elif event.is_released() and mousePressed:
 			var mouseReleasePosition:Vector2 = get_local_mouse_position()
 			$Player.apply_impulse((mousePosition - mouseReleasePosition) * 2)
 			mousePressed = false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj6iaal24m85y"]
+[gd_scene load_steps=8 format=3 uid="uid://dj6iaal24m85y"]
 
 [ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_bvpyx"]
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_jh14k"]
 [ext_resource type="PackedScene" uid="uid://csh2a4hn0ibfa" path="res://src/scenes/player.tscn" id="3_4fb2v"]
+[ext_resource type="Script" path="res://src/scripts/GamePauseController.gd" id="4_x6d1o"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjeur"]
 bounce = 0.9
@@ -52,3 +53,15 @@ offset_right = 122.0
 offset_bottom = 650.0
 theme_override_font_sizes/font_size = 32
 text = "Shots: 0"
+
+[node name="GamePauseController" type="Node" parent="."]
+script = ExtResource("4_x6d1o")
+
+[node name="LabelGamePaused" type="Label" parent="."]
+visible = false
+z_index = 999
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "Game is paused...
+Press Esc to continue"
