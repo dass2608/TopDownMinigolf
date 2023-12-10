@@ -1,6 +1,8 @@
 extends Node2D
 
 signal levelCompleted(shots:int, levelname:String)
+signal levelAborted
+signal levelRestarted(levelname:String)
 
 var mousePosition:Vector2
 var mousePressed = false
@@ -8,6 +10,7 @@ var shots:int = 0
 var levelname:String = ""
 
 func _input(event):
+#	print("[INPUT] game.gd _unhandled_input: ", event)
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			mousePosition = get_local_mouse_position()
@@ -30,3 +33,13 @@ func loadLevel(levelName:String):
 func _onLevelCompleted():
 	print("Level Completed!")
 	emit_signal("levelCompleted", shots, levelname)
+
+
+func _on_button_main_menu_pressed():
+	levelAborted.emit()
+	$GamePauseController.unpause()
+
+
+func _on_button_restart_level_pressed():
+	$GamePauseController.unpause()
+	levelRestarted.emit(levelname)

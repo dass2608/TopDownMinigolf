@@ -37,10 +37,6 @@ func _ready():
 		$MenuItems/PanelLevelselect/ScrollContainer/VBoxContainer.add_child(buttonNode)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func _on_button_play_pressed():
 	$MenuItems/PanelLevelselect.show()
 
@@ -48,6 +44,8 @@ func _levelSelected(levelName:String):
 	var game = gameScene.instantiate()
 	game.loadLevel(levelName)
 	game.connect(&"levelCompleted", _levelDone)
+	game.levelAborted.connect(_levelAborted)
+	game.levelRestarted.connect(_levelRestarted)
 	add_child(game, true)
 	$MenuItems.hide()
 	$MenuItems/PanelLevelselect.hide()
@@ -57,27 +55,35 @@ func _levelDone(shots:int, level:String):
 		if i.name == "Game":
 			i.queue_free()
 			$MenuItems.show()
+			break
 	$MenuItems/LabelLevelComplete.text = level.trim_suffix(".tscn") + " completed in " + str(shots) + " shots!"
 
+func _levelAborted():
+	for i in get_children():
+		if i.name == "Game":
+			i.queue_free()
+			break
+	$MenuItems/LabelLevelComplete.text = "Level aborted!"
+	$MenuItems.show()
 
+func _levelRestarted(levelName):
+	_levelAborted()
+	await get_tree().process_frame
+	_levelSelected(levelName)
 
 func _on_button_e_net_pressed():
 	$MenuItems/Credits/MainScreen.hide()
 	$MenuItems/Credits/ENet.show()
 
-
 func _on_buttonmbed_tls_pressed():
 	$MenuItems/Credits/MainScreen.hide()
 	$MenuItems/Credits/mbedTLS.show()
 
-
 func _on_button_about_credits_pressed():
 	$MenuItems/Credits.show()
 
-
 func _on_button_main_screen_back_pressed():
 	$MenuItems/Credits.hide()
-
 
 func _on_button_back_pressed():
 	$MenuItems/Credits/ENet.hide()

@@ -57,11 +57,38 @@ text = "Shots: 0"
 [node name="GamePauseController" type="Node" parent="."]
 script = ExtResource("4_x6d1o")
 
-[node name="LabelGamePaused" type="Label" parent="."]
+[node name="PauseMenu" type="MarginContainer" parent="."]
 visible = false
-z_index = 999
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 24
-text = "Game is paused...
-Press Esc to continue"
+offset_right = 1154.0
+offset_bottom = 651.0
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Paused"
+
+[node name="ButtonUnpause" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Game"
+
+[node name="ButtonMainMenu" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit to Main Menu"
+
+[node name="ButtonRestartLevel" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonUnpause" to="GamePauseController" method="_on_button_unpause_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonRestartLevel" to="." method="_on_button_restart_level_pressed"]
