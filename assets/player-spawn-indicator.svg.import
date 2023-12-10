@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0kert5uq21ui"
-path="res://.godot/imported/pillar-square-dark.svg-52f1480a1d43eea75ba1f9177fcb65f7.ctex"
+uid="uid://cu20xjfcsptvs"
+path="res://.godot/imported/player-spawn-indicator.svg-fcc6d9c6cd5e9477ecdb3fbdacd55970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pillar-square-dark.svg"
-dest_files=["res://.godot/imported/pillar-square-dark.svg-52f1480a1d43eea75ba1f9177fcb65f7.ctex"]
+source_file="res://assets/player-spawn-indicator.svg"
+dest_files=["res://.godot/imported/player-spawn-indicator.svg-fcc6d9c6cd5e9477ecdb3fbdacd55970.ctex"]
 
 [params]
 

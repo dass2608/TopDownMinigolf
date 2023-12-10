@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsg2swifmqfw8"
-path="res://.godot/imported/pillar-square-light.svg-6971b248575ae0e6421f5a9620c77e26.ctex"
+uid="uid://c0kert5uq21ui"
+path="res://.godot/imported/pillar-square-lime.svg-506b7c05dc58a7d2f6da1e72ba2e2993.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pillar-square-light.svg"
-dest_files=["res://.godot/imported/pillar-square-light.svg-6971b248575ae0e6421f5a9620c77e26.ctex"]
+source_file="res://assets/pillar-square-lime.svg"
+dest_files=["res://.godot/imported/pillar-square-lime.svg-506b7c05dc58a7d2f6da1e72ba2e2993.ctex"]
 
 [params]
 

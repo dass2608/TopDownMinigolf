@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" style="background-color: transparent;">
+  <!-- Transparent Background -->
+  <!--<rect width="64" height="64" fill="transparent" />-->
+
+  <!-- Red Cross -->
+  <rect x="22" y="28" width="16" height="4" fill="#ff0000" />
+  <rect x="28" y="22" width="4" height="16" fill="#ff0000" />
+</svg>

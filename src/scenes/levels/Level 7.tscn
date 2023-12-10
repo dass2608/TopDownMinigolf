@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkhqxnx1me1sh"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://cggltka4es1ft" path="res://src/scenes/levelComponents/BlackPillar.tscn" id="4_tkww8"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="5_48vn4"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(126, 373)
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="StickyPillar" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(277, 324)
+
+[node name="StickyPillar2" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(277, 425)
+
+[node name="StickyPillar3" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(277, 374)
+
+[node name="StickyPillar13" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(376, 473)
+
+[node name="StickyPillar14" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(376, 574)
+
+[node name="StickyPillar28" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(376, 623)
+
+[node name="StickyPillar15" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(376, 523)
+
+[node name="StickyPillar16" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 174)
+
+[node name="StickyPillar17" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 275)
+
+[node name="StickyPillar18" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 224)
+
+[node name="StickyPillar25" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 24)
+
+[node name="StickyPillar26" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 125)
+
+[node name="StickyPillar27" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(427, 74)
+
+[node name="StickyPillar19" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 473)
+
+[node name="StickyPillar20" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 574)
+
+[node name="StickyPillar21" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 523)
+
+[node name="StickyPillar22" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 175)
+
+[node name="StickyPillar23" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 276)
+
+[node name="StickyPillar24" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(676, 225)
+
+[node name="StickyPillar4" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(529, 324)
+
+[node name="StickyPillar5" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(529, 425)
+
+[node name="StickyPillar6" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(529, 374)
+
+[node name="StickyPillar7" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(526, 574)
+
+[node name="StickyPillar8" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(577, 574)
+
+[node name="StickyPillar9" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(475, 574)
+
+[node name="StickyPillar10" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(277, 174)
+
+[node name="StickyPillar11" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(328, 174)
+
+[node name="StickyPillar12" parent="Pillars" instance=ExtResource("4_tkww8")]
+position = Vector2(226, 174)
+
+[node name="NormalPillar" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(527, 174)
+
+[node name="NormalPillar2" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(277, 574)
+
+[node name="NormalPillar3" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(126, 175)
+
+[node name="NormalPillar4" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(126, 175)
+
+[node name="NormalPillar5" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(77, 175)
+
+[node name="NormalPillar6" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(26, 175)
+
+[node name="NormalPillar7" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(126, 574)
+
+[node name="NormalPillar8" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(77, 574)
+
+[node name="NormalPillar9" parent="Pillars" instance=ExtResource("5_48vn4")]
+position = Vector2(26, 574)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

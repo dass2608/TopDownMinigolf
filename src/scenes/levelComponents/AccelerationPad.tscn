@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c04mug5us1vsn"]
+
+[ext_resource type="Script" path="res://src/scripts/LimePillar.gd" id="1_85e6j"]
+[ext_resource type="Texture2D" uid="uid://c0kert5uq21ui" path="res://assets/pillar-square-lime.svg" id="1_s8rts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
+size = Vector2(80, 79)
+
+[node name="AccelerationPad" type="Node2D"]
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+scale = Vector2(0.63, 0.63)
+script = ExtResource("1_85e6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_pldhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_s8rts")
+
+[connection signal="body_entered" from="StaticBody2D" to="StaticBody2D" method="_on_body_entered"]

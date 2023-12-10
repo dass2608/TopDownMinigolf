@@ -8,8 +8,8 @@
 bounce = 0.9
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kly25"]
-a = Vector2(-576.5, -322.5)
-b = Vector2(575.5, -322.5)
+a = Vector2(-576.5, 0)
+b = Vector2(575.5, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_23u8e"]
 b = Vector2(-1, 649)
@@ -27,11 +27,11 @@ texture = ExtResource("1_bvpyx")
 physics_material_override = SubResource("PhysicsMaterial_fjeur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.5, 323.5)
+position = Vector2(576.5, 0)
 shape = SubResource("SegmentShape2D_kly25")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.5, 970.5)
+position = Vector2(577, 649)
 shape = SubResource("SegmentShape2D_kly25")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://dll20kiujc6s7"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://cggltka4es1ft" path="res://src/scenes/levelComponents/BlackPillar.tscn" id="4_ff4h5"]
+[ext_resource type="PackedScene" uid="uid://btitquh1upxev" path="res://src/scenes/levelComponents/GrayPillar.tscn" id="5_f6fip"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(126, 374)
+
+[node name="BlackPillar" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(227, 324)
+
+[node name="BlackPillar2" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(227, 374)
+
+[node name="BlackPillar3" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(227, 424)
+
+[node name="BlackPillar4" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(426, 226)
+
+[node name="BlackPillar5" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(426, 273)
+
+[node name="BlackPillar6" parent="." instance=ExtResource("4_ff4h5")]
+position = Vector2(426, 176)
+
+[node name="GreyPillar" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(324, 176)
+
+[node name="GreyPillar2" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(275, 176)
+
+[node name="GreyPillar3" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(225, 176)
+
+[node name="GreyPillar4" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(175, 176)
+
+[node name="GreyPillar5" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(175, 424)
+
+[node name="GreyPillar9" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(25, 424)
+
+[node name="GreyPillar10" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(75, 424)
+
+[node name="GreyPillar11" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(125, 424)
+
+[node name="GreyPillar6" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(25, 176)
+
+[node name="GreyPillar7" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(75, 176)
+
+[node name="GreyPillar8" parent="." instance=ExtResource("5_f6fip")]
+position = Vector2(125, 176)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]
