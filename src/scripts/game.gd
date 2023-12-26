@@ -15,7 +15,7 @@ func _input(event):
 		if event.is_pressed():
 			var mask = event.button_mask
 			var isLeftClicked = mask & MOUSE_BUTTON_MASK_LEFT
-			print("Mousclick! Mask: ", mask, "; Leftclick? = ", isLeftClicked > 0)
+			#print("Mousclick! Mask: ", mask, "; Leftclick? = ", isLeftClicked > 0)
 			if isLeftClicked == 0: return
 			mousePosition = get_local_mouse_position()
 			mousePressed = true
