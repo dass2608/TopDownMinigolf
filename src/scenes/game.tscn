@@ -9,12 +9,11 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjeur"]
 bounce = 0.9
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_kly25"]
-a = Vector2(-576.5, 0)
-b = Vector2(575.5, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbsva"]
+size = Vector2(1623, 406)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_23u8e"]
-b = Vector2(-1, 649)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3hij"]
+size = Vector2(543, 1040)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jh14k")
@@ -29,26 +28,26 @@ texture = ExtResource("1_bvpyx")
 physics_material_override = SubResource("PhysicsMaterial_fjeur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.5, 0)
-shape = SubResource("SegmentShape2D_kly25")
+position = Vector2(553.5, -202)
+shape = SubResource("RectangleShape2D_lbsva")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(577, 649)
-shape = SubResource("SegmentShape2D_kly25")
+position = Vector2(577, 850)
+shape = SubResource("RectangleShape2D_lbsva")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("SegmentShape2D_23u8e")
+position = Vector2(-270.5, 253)
+shape = SubResource("RectangleShape2D_a3hij")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1153, 0)
-shape = SubResource("SegmentShape2D_23u8e")
+position = Vector2(1425, 270)
+shape = SubResource("RectangleShape2D_a3hij")
 
 [node name="Player" parent="." instance=ExtResource("3_4fb2v")]
 z_index = 100
 position = Vector2(676, 374)
 
 [node name="LabelShots" type="Label" parent="."]
-z_index = 99
 offset_top = 602.0
 offset_right = 122.0
 offset_bottom = 650.0
