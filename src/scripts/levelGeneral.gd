@@ -6,6 +6,9 @@ signal nextLevel
 @onready var LockXmovement = self.has_node("DisableXmovement")
 @onready var LockYmovement = self.has_node("DisableYmovement")
 
+func _ready():
+	$TextureRect.hide()
+
 func _physics_process(_delta):
 	if !movablePillarsEnabled: return
 	if Input.is_action_pressed("ui_right") and !LockXmovement:

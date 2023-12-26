@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj6iaal24m85y"]
+[gd_scene load_steps=9 format=3 uid="uid://dj6iaal24m85y"]
 
 [ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_bvpyx"]
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_jh14k"]
 [ext_resource type="PackedScene" uid="uid://csh2a4hn0ibfa" path="res://src/scenes/player.tscn" id="3_4fb2v"]
 [ext_resource type="Script" path="res://src/scripts/GamePauseController.gd" id="4_x6d1o"]
+[ext_resource type="Texture2D" uid="uid://bshelry0fek0v" path="res://assets/PauseIcon.png" id="5_uwpy0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjeur"]
 bounce = 0.9
@@ -89,6 +90,15 @@ text = "Exit to Main Menu"
 layout_mode = 2
 text = "Restart Level"
 
+[node name="PauseButton" type="TextureButton" parent="."]
+modulate = Color(0.831373, 0.831373, 0.831373, 1)
+offset_left = 1089.0
+offset_right = 1217.0
+offset_bottom = 128.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_uwpy0")
+
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonUnpause" to="GamePauseController" method="_on_button_unpause_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonRestartLevel" to="." method="_on_button_restart_level_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

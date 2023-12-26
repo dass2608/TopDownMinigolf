@@ -47,3 +47,10 @@ func _on_button_main_menu_pressed():
 func _on_button_restart_level_pressed():
 	$GamePauseController.unpause()
 	levelRestarted.emit(levelname)
+
+func _on_pause_button_pressed():
+	$GamePauseController.pause()
+	
+	# I don't think you can press the button without causing a shot, therefore it shouldn't be possible to chesse the shot counter though this, but if I find a better soulotion, I will do it differtent
+	shots -= 1
+	$LabelShots.text = "Shots: " + str(shots)
