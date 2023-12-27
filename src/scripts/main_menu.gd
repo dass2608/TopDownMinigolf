@@ -26,7 +26,6 @@ func getLevelArray() -> Array[String]:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	var levelArray = getLevelArray()
 	for i in levelArray:
 		var buttonNode = load("res://src/scenes/level_button.tscn").instantiate()
@@ -42,10 +41,13 @@ func _on_button_play_pressed():
 
 func _levelSelected(levelName:String):
 	var game = gameScene.instantiate()
+	game.loadSettings($SettingsManager.settings)
 	game.loadLevel(levelName)
 	game.connect(&"levelCompleted", _levelDone)
 	game.levelAborted.connect(_levelAborted)
 	game.levelRestarted.connect(_levelRestarted)
+	$SettingsManager.settingsChanged.connect(game.loadSettings)
+	
 	add_child(game, true)
 	$MenuItems.hide()
 	$MenuItems/PanelLevelselect.hide()

@@ -19,6 +19,7 @@ size = Vector2(543, 1040)
 script = ExtResource("1_jh14k")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
 offset_top = -1.0
 offset_right = 1154.0
 offset_bottom = 648.0

@@ -4,6 +4,8 @@ signal levelCompleted(shots:int, levelname:String)
 signal levelAborted
 signal levelRestarted(levelname:String)
 
+var settings:Dictionary = {}
+
 var mousePosition:Vector2
 var mousePressed = false
 var shots:int = 0
@@ -25,6 +27,12 @@ func _input(event):
 			var mouseReleasePosition:Vector2 = get_local_mouse_position()
 			$Player.apply_impulse((mousePosition - mouseReleasePosition) * 2)
 			mousePressed = false
+	elif event is InputEventMouseMotion:
+		queue_redraw()
+
+func _draw():
+	if mousePressed and settings.helperLineEnabled:
+		draw_line(mousePosition, get_local_mouse_position(), settings.helperLineColor, settings.helperLineWidth, true)
 
 func loadLevel(levelName:String):
 	var level = load("res://src/scenes/levels/" + levelName).instantiate()
@@ -33,6 +41,9 @@ func loadLevel(levelName:String):
 		$Player.position = level.get_node("PlayerStartPosition").position
 	add_child(level)
 	levelname = levelName
+
+func loadSettings(new_settings:Dictionary):
+	settings = new_settings
 
 func _onLevelCompleted():
 	print("Level Completed!")

@@ -4,31 +4,46 @@ signal settingsChanged(settings:Dictionary)
 
 const CONFIG_FILE_PATH:String = "user://settings.cfg"
 
+const CONFIG_SECTION_HELPER_LINE:String = "helperLine"
+const CONFIG_SECTION_CONTROLS:String = "controls"
+
 var settings := {}
 
 func _ready():
 	var configFile = ConfigFile.new()
 	if FileAccess.file_exists(CONFIG_FILE_PATH):
+		var queueSave:bool = false
 		var err = configFile.load(CONFIG_FILE_PATH)
 		if err != OK:
 			push_error("Failed to load config File! Error handling not yet implented!")
 			get_tree().quit(1)
-		if configFile.get_value("controls", "onscreenButtonsEnabled") == null:
+		if configFile.get_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", null) == null:
+			queueSave = true
 			if OS.has_feature("mobile"):
-				configFile.set_value("controls", "onscreenButtonsEnabled", true)
+				configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", true)
 			else:
-				configFile.set_value("controls", "onscreenButtonsEnabled", false)
+				configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", false)
 				
-		elif configFile.get_value("controls", "helperLineEnabled") == null:
-			configFile.set_value("controls", "helperLineEnabled", false)
-			
+		elif configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", null) == null:
+			configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", false)
+			queueSave = true
+		elif configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor", null) == null:
+			configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor", Color.WHITE)
+			queueSave = true
+		elif configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth", null) == null:
+			configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth", 10)
+			queueSave = true
+		
+		if queueSave:
+			configFile.save(CONFIG_FILE_PATH)
+		
 	else:
 		if OS.has_feature("mobile"):
-			configFile.set_value("controls", "onscreenButtonsEnabled", true)
+			configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", true)
 		else:
-			configFile.set_value("controls", "onscreenButtonsEnabled", false)
+			configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", false)
 			
-		configFile.set_value("controls", "helperLineEnabled", false)
+		configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", false)
 		if configFile.save(CONFIG_FILE_PATH) != OK:
 			push_error("Failed to save config File! Error handling not yet implented!")
 			get_tree().quit(1)
@@ -36,6 +51,8 @@ func _ready():
 	setupSettings(configFile)
 
 func setupSettings(configFile: ConfigFile):
-	settings.onscreenButtonsEnabled = configFile.get_value("controls", "onscreenButtonsEnabled")
-	settings.helperLineEnabled = configFile.get_value("controls", "helperLineEnabled")
+	settings.onscreenButtonsEnabled = configFile.get_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled")
+	settings.helperLineEnabled = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled")
+	settings.helperLineColor = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor")
+	settings.helperLineWidth = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth")
 	emit_signal("settingsChanged", settings)
