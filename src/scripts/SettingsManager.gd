@@ -56,3 +56,16 @@ func setupSettings(configFile: ConfigFile):
 	settings.helperLineColor = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor")
 	settings.helperLineWidth = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth")
 	emit_signal("settingsChanged", settings)
+
+func setSetting(key:String, value:Variant):
+	settings[key] = value
+	emit_signal("settingsChanged", settings)
+	saveSettings()
+
+func saveSettings():
+	var configFile = ConfigFile.new()
+	configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", settings.onscreenButtonsEnabled)
+	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", settings.helperLineEnabled)
+	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor", settings.helperLineColor)
+	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth", settings.helperLineWidth)
+	configFile.save(CONFIG_FILE_PATH)

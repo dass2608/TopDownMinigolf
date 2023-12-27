@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt2ji5sldefe3"]
+[gd_scene load_steps=6 format=3 uid="uid://dt2ji5sldefe3"]
 
 [ext_resource type="Texture2D" uid="uid://cxoq32by4sq7v" path="res://assets/menu-background.svg" id="1_0fhw5"]
 [ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_cyvbu"]
 [ext_resource type="Script" path="res://src/scripts/SettingsManager.gd" id="3_6563a"]
+[ext_resource type="Script" path="res://src/scripts/SettingsMenu.gd" id="3_fj6xf"]
+[ext_resource type="Script" path="res://src/scripts/ColorPickerButtonHelperLineColor.gd" id="3_xoaoq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -226,10 +228,82 @@ theme_override_font_sizes/font_size = 40
 text = "Back"
 flat = true
 
+[node name="SettingsMenu" type="PanelContainer" parent="MenuItems"]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 1129.0
+offset_bottom = 627.0
+script = ExtResource("3_fj6xf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuItems/SettingsMenu"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="MenuItems/SettingsMenu/VBoxContainer"]
+layout_mode = 2
+current_tab = 1
+
+[node name="Controls" type="Control" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Helper Line" type="Control" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line"]
+layout_mode = 0
+offset_right = 1110.0
+offset_bottom = 40.0
+
+[node name="CheckButtonEnableLine" type="CheckButton" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Enable Helper Line"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " Helper Line Width"
+
+[node name="HSlider" type="HSlider" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 5.0
+max_value = 25.0
+value = 10.0
+tick_count = 20
+
+[node name="HBoxContainerColor" type="HBoxContainer" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " Helper Line Color"
+
+[node name="ColorPicker" type="ColorPickerButton" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+color = Color(1, 1, 1, 1)
+script = ExtResource("3_xoaoq")
+
+[node name="ButtonBack" type="Button" parent="MenuItems/SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 26
+text = "Back"
+
 [node name="SettingsManager" type="Node" parent="."]
 script = ExtResource("3_6563a")
 
 [connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MenuItems/ButtonAboutCredits" to="." method="_on_button_about_credits_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonENet" to="." method="_on_button_e_net_pressed"]
@@ -237,3 +311,8 @@ script = ExtResource("3_6563a")
 [connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonMainScreenBack" to="." method="_on_button_main_screen_back_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/ENet/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/mbedTLS/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="visibility_changed" from="MenuItems/SettingsMenu" to="MenuItems/SettingsMenu" method="_on_visibility_changed"]
+[connection signal="toggled" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/CheckButtonEnableLine" to="MenuItems/SettingsMenu" method="_on_check_button_enable_line_toggled"]
+[connection signal="drag_ended" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer/HSlider" to="MenuItems/SettingsMenu" method="_on_h_slider_drag_ended"]
+[connection signal="color_changed" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor/ColorPicker" to="MenuItems/SettingsMenu" method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="MenuItems/SettingsMenu/VBoxContainer/ButtonBack" to="MenuItems/SettingsMenu" method="_on_button_back_pressed"]

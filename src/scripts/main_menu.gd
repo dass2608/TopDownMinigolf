@@ -95,3 +95,6 @@ func _on_button_back_pressed():
 
 func _on_button_quit_pressed():
 	get_tree().quit()
+
+func _on_button_settings_pressed():
+	$MenuItems/SettingsMenu.show()
