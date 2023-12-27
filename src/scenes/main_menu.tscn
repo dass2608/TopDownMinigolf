@@ -237,13 +237,17 @@ layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="MenuItems/SettingsMenu/VBoxContainer"]
 layout_mode = 2
-current_tab = 1
 
-[node name="Controls" type="Control" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer"]
-visible = false
+[node name="Controls" type="VBoxContainer" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer"]
 layout_mode = 2
 
+[node name="EnableOnScreenButtons" type="CheckButton" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Enable On-Screen Buttons (recommended for mobile)"
+
 [node name="Helper Line" type="Control" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line"]
@@ -307,6 +311,7 @@ script = ExtResource("3_6563a")
 [connection signal="pressed" from="MenuItems/Credits/ENet/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/mbedTLS/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="visibility_changed" from="MenuItems/SettingsMenu" to="MenuItems/SettingsMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Controls/EnableOnScreenButtons" to="MenuItems/SettingsMenu" method="_on_enable_on_screen_buttons_pressed"]
 [connection signal="toggled" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/CheckButtonEnableLine" to="MenuItems/SettingsMenu" method="_on_check_button_enable_line_toggled"]
 [connection signal="drag_ended" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer/HSlider" to="MenuItems/SettingsMenu" method="_on_h_slider_drag_ended"]
 [connection signal="color_changed" from="MenuItems/SettingsMenu/VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor/ColorPicker" to="MenuItems/SettingsMenu" method="_on_color_picker_color_changed"]

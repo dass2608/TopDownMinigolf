@@ -1,9 +1,12 @@
 extends PanelContainer
 
 @onready var settingsManager:Node = get_parent().get_parent().get_node("SettingsManager")
+
 @onready var enableLineButton:CheckButton = $"VBoxContainer/TabContainer/Helper Line/VBoxContainer/CheckButtonEnableLine"
 @onready var lineWidthSlider:HSlider = $"VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer/HSlider"
 @onready var lineColorPicker:ColorPickerButton = $"VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor/ColorPicker"
+
+@onready var enableOnscreenButtons:CheckButton = $"VBoxContainer/TabContainer/Controls/EnableOnScreenButtons"
 
 func _ready():
 	hide()
@@ -14,6 +17,7 @@ func _on_visibility_changed():
 		enableLineButton.button_pressed = settingsManager.settings.helperLineEnabled
 		lineWidthSlider.value = settingsManager.settings.helperLineWidth
 		lineColorPicker.color = settingsManager.settings.helperLineColor
+		enableOnscreenButtons.button_pressed = settingsManager.settings.onscreenButtonsEnabled
 
 
 func _on_check_button_enable_line_toggled(toggled_on):
@@ -31,3 +35,7 @@ func _on_color_picker_color_changed(color):
 
 func _on_button_back_pressed():
 	hide()
+
+
+func _on_enable_on_screen_buttons_pressed():
+	settingsManager.setSetting("onscreenButtonsEnabled", enableOnscreenButtons.button_pressed)
