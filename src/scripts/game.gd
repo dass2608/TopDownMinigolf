@@ -5,14 +5,16 @@ signal levelAborted
 signal levelRestarted(levelname:String)
 
 var settings:Dictionary = {}
+var enableXcontrolButtons:bool = true
+var enableYcontrolButtons:bool = true
 
 var mousePosition:Vector2
 var mousePressed = false
 var shots:int = 0
 var levelname:String = ""
 
-func _input(event):
-#	print("[INPUT] game.gd _unhandled_input: ", event)
+func _unhandled_input(event):
+	#print("[INPUT] game.gd _unhandled_input: ", event)
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			var mask = event.button_mask
@@ -35,12 +37,29 @@ func _draw():
 		draw_line(mousePosition, get_local_mouse_position(), settings.helperLineColor, settings.helperLineWidth, true)
 
 func loadLevel(levelName:String):
-	var level = load("res://src/scenes/levels/" + levelName).instantiate()
+	var level:Node2D = load("res://src/scenes/levels/" + levelName).instantiate()
 	level.connect(&"nextLevel", _onLevelCompleted)
 	if level.has_node("PlayerStartPosition"):
 		$Player.position = level.get_node("PlayerStartPosition").position
+	
+	if settings.onscreenButtonsEnabled:
+		if !level.has_node("MovablePillars"):
+			enableXcontrolButtons = false
+			enableYcontrolButtons = false
+		if level.has_node("DisableXmovement"):
+			enableXcontrolButtons = false
+		if level.has_node("DisableYmovement"):
+			enableYcontrolButtons = false
+	else:
+		enableXcontrolButtons = false
+		enableYcontrolButtons = false
+	
+	level.show_behind_parent = true
 	add_child(level)
 	levelname = levelName
+	
+	$OnscreenButtons.Xdisabled = !enableXcontrolButtons
+	$OnscreenButtons.Ydisabled = !enableYcontrolButtons
 
 func loadSettings(new_settings:Dictionary):
 	settings = new_settings
@@ -49,11 +68,9 @@ func _onLevelCompleted():
 	print("Level Completed!")
 	emit_signal("levelCompleted", shots, levelname)
 
-
 func _on_button_main_menu_pressed():
 	levelAborted.emit()
 	$GamePauseController.unpause()
-
 
 func _on_button_restart_level_pressed():
 	$GamePauseController.unpause()
@@ -61,6 +78,3 @@ func _on_button_restart_level_pressed():
 
 func _on_pause_button_pressed():
 	$GamePauseController.pause()
-	# I don't think you can press the button without causing a shot, therefore it shouldn't be possible to chesse the shot counter though this, but if I find a better soulotion, I will do it differtent
-	shots -= 1
-	$LabelShots.text = "Shots: " + str(shots)

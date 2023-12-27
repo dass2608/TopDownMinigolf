@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj6iaal24m85y"]
+[gd_scene load_steps=10 format=3 uid="uid://dj6iaal24m85y"]
 
 [ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_bvpyx"]
 [ext_resource type="Script" path="res://src/scripts/game.gd" id="1_jh14k"]
 [ext_resource type="PackedScene" uid="uid://csh2a4hn0ibfa" path="res://src/scenes/player.tscn" id="3_4fb2v"]
 [ext_resource type="Script" path="res://src/scripts/GamePauseController.gd" id="4_x6d1o"]
 [ext_resource type="Texture2D" uid="uid://bshelry0fek0v" path="res://assets/PauseIcon.png" id="5_uwpy0"]
+[ext_resource type="PackedScene" uid="uid://gmbnmdvupiqb" path="res://src/scenes/onscreenButtons.tscn" id="6_j6ej4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fjeur"]
 bounce = 0.9
@@ -97,6 +98,13 @@ offset_right = 1217.0
 offset_bottom = 128.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("5_uwpy0")
+
+[node name="OnscreenButtons" parent="." instance=ExtResource("6_j6ej4")]
+offset_left = 968.0
+offset_top = 598.0
+offset_right = 968.0
+offset_bottom = 598.0
+scale = Vector2(0.4, 0.4)
 
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonUnpause" to="GamePauseController" method="_on_button_unpause_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]

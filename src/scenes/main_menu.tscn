@@ -6,16 +6,11 @@
 [ext_resource type="Script" path="res://src/scripts/SettingsMenu.gd" id="3_fj6xf"]
 [ext_resource type="Script" path="res://src/scripts/ColorPickerButtonHelperLineColor.gd" id="3_xoaoq"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMenu" type="Node"]
 script = ExtResource("1_cyvbu")
 
 [node name="MenuItems" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 
 [node name="TextureRect" type="TextureRect" parent="MenuItems"]

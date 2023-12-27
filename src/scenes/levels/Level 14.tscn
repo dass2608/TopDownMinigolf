@@ -332,4 +332,6 @@ scale = Vector2(3, 3)
 [node name="Hole" parent="." instance=ExtResource("2_st0dj")]
 position = Vector2(225, 176)
 
+[node name="DisableYmovement" type="Node" parent="."]
+
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

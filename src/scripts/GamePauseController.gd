@@ -14,7 +14,7 @@ func unpause():
 	get_parent().mousePressed = false
 
 func _unhandled_key_input(event):
-#	print("[INPUT] GamePauseController: ", event)
+	#print("[INPUT] GamePauseController: ", event)
 	if event.is_action_pressed("pauseGame"):
 		if not get_tree().paused:
 			pause()

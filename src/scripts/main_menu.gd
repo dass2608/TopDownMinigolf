@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 const gameScene = preload("res://src/scenes/game.tscn")
 

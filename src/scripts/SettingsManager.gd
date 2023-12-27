@@ -44,6 +44,8 @@ func _ready():
 			configFile.set_value(CONFIG_SECTION_CONTROLS, "onscreenButtonsEnabled", false)
 			
 		configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", false)
+		configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor", Color.WHITE)
+		configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth", 10)
 		if configFile.save(CONFIG_FILE_PATH) != OK:
 			push_error("Failed to save config File! Error handling not yet implented!")
 			get_tree().quit(1)
