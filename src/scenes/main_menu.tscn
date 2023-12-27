@@ -36,25 +36,47 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 80
 text = "Top Down Minigolf"
 
-[node name="LabelLevelComplete" type="Label" parent="MenuItems"]
+[node name="MenuButtons" type="VBoxContainer" parent="MenuItems"]
 layout_mode = 0
-offset_left = 354.0
+offset_left = 257.0
 offset_top = 234.0
-offset_right = 734.0
-offset_bottom = 276.0
+offset_right = 856.0
+offset_bottom = 480.0
+
+[node name="LabelLevelComplete" type="Label" parent="MenuItems/MenuButtons"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 
-[node name="ButtonPlay" type="Button" parent="MenuItems"]
-layout_mode = 0
-offset_left = 485.0
-offset_top = 303.0
-offset_right = 598.0
-offset_bottom = 383.0
+[node name="HSeparator" type="HSeparator" parent="MenuItems/MenuButtons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MenuItems/MenuButtons"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="ButtonPlay" type="Button" parent="MenuItems/MenuButtons"]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 44
 text = "Play"
-flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuItems/MenuButtons"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonSettings" type="Button" parent="MenuItems/MenuButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="MenuItems/MenuButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "Quit"
 
 [node name="PanelLevelselect" type="Panel" parent="MenuItems"]
 visible = false
@@ -207,7 +229,8 @@ flat = true
 [node name="SettingsManager" type="Node" parent="."]
 script = ExtResource("3_6563a")
 
-[connection signal="pressed" from="MenuItems/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MenuItems/ButtonAboutCredits" to="." method="_on_button_about_credits_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonENet" to="." method="_on_button_e_net_pressed"]
 [connection signal="pressed" from="MenuItems/Credits/MainScreen/ButtonmbedTLS" to="." method="_on_buttonmbed_tls_pressed"]

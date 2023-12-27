@@ -58,14 +58,14 @@ func _levelDone(shots:int, level:String):
 			i.queue_free()
 			$MenuItems.show()
 			break
-	$MenuItems/LabelLevelComplete.text = level.trim_suffix(".tscn") + " completed in " + str(shots) + " shots!"
+	$MenuItems/MenuButtons/LabelLevelComplete.text = level.trim_suffix(".tscn") + " completed in " + str(shots) + " shots!"
 
 func _levelAborted():
 	for i in get_children():
 		if i.name == "Game":
 			i.queue_free()
 			break
-	$MenuItems/LabelLevelComplete.text = "Level aborted!"
+	$MenuItems/MenuButtons/LabelLevelComplete.text = "Level aborted!"
 	$MenuItems.show()
 
 func _levelRestarted(levelName):
@@ -91,3 +91,7 @@ func _on_button_back_pressed():
 	$MenuItems/Credits/ENet.hide()
 	$MenuItems/Credits/mbedTLS.hide()
 	$MenuItems/Credits/MainScreen.show()
+
+
+func _on_button_quit_pressed():
+	get_tree().quit()
