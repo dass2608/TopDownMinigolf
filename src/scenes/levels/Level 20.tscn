@@ -227,6 +227,7 @@ direction = 1
 [node name="DirectionPad6" parent="Pillars" instance=ExtResource("4_ek7b0")]
 position = Vector2(1028, 575)
 direction = 1
+strength = 2.0
 
 [node name="DirectionPad7" parent="Pillars" instance=ExtResource("4_ek7b0")]
 position = Vector2(25, 573)
@@ -237,6 +238,11 @@ position = Vector2(25, 622)
 direction = 3
 strength = 10.0
 nullifySpeed = true
+
+[node name="DirectionPad8" parent="Pillars" instance=ExtResource("4_ek7b0")]
+position = Vector2(1028, 625)
+direction = 3
+strength = 4.0
 
 [node name="DeathPad" parent="Pillars" instance=ExtResource("5_5txtf")]
 position = Vector2(526, 24)
