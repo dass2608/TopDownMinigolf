@@ -39,7 +39,7 @@ strength = 20.0
 position = Vector2(526, 425)
 
 [node name="NormalPillar2" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(475, 425)
+position = Vector2(476, 425)
 
 [node name="NormalPillar4" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(326, 425)
@@ -48,37 +48,37 @@ position = Vector2(326, 425)
 position = Vector2(276, 325)
 
 [node name="NormalPillar19" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(927, 174)
+position = Vector2(927, 175)
 
 [node name="NormalPillar21" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(927, 225)
 
 [node name="NormalPillar22" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(927, 274)
+position = Vector2(927, 275)
 
 [node name="NormalPillar23" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(927, 325)
 
 [node name="NormalPillar24" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(927, 374)
+position = Vector2(927, 375)
 
 [node name="NormalPillar25" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(927, 425)
 
 [node name="NormalPillar28" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(677, 323)
+position = Vector2(676, 325)
 
 [node name="NormalPillar29" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(677, 372)
+position = Vector2(676, 375)
 
 [node name="NormalPillar30" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(677, 423)
+position = Vector2(676, 425)
 
 [node name="NormalPillar26" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(927, 476)
+position = Vector2(927, 475)
 
 [node name="NormalPillar27" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(927, 527)
+position = Vector2(927, 525)
 
 [node name="NormalPillar20" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(827, 600)
@@ -87,10 +87,10 @@ position = Vector2(827, 600)
 position = Vector2(276, 448)
 
 [node name="NormalPillar14" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(225, 475)
+position = Vector2(226, 475)
 
 [node name="NormalPillar15" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(177, 497)
+position = Vector2(176, 497)
 
 [node name="NormalPillar16" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(126, 524)
@@ -99,7 +99,7 @@ position = Vector2(126, 524)
 position = Vector2(376, 425)
 
 [node name="NormalPillar6" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(427, 425)
+position = Vector2(426, 425)
 
 [node name="NormalPillar3" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(576, 425)
@@ -111,7 +111,7 @@ position = Vector2(626, 425)
 position = Vector2(526, 600)
 
 [node name="NormalPillar8" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(475, 600)
+position = Vector2(476, 600)
 
 [node name="NormalPillar9" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(326, 600)
@@ -120,7 +120,7 @@ position = Vector2(326, 600)
 position = Vector2(376, 600)
 
 [node name="NormalPillar11" parent="Pillars" instance=ExtResource("4_v6s80")]
-position = Vector2(427, 600)
+position = Vector2(426, 600)
 
 [node name="NormalPillar12" parent="Pillars" instance=ExtResource("4_v6s80")]
 position = Vector2(576, 600)
@@ -129,22 +129,22 @@ position = Vector2(576, 600)
 position = Vector2(376, 525)
 
 [node name="StickyPillar2" parent="Pillars" instance=ExtResource("5_16vco")]
-position = Vector2(327, 525)
+position = Vector2(326, 525)
 
 [node name="StickyPillar3" parent="Pillars" instance=ExtResource("5_16vco")]
-position = Vector2(375, 101)
+position = Vector2(376, 101)
 
 [node name="StickyPillar4" parent="Pillars" instance=ExtResource("5_16vco")]
 position = Vector2(426, 101)
 
 [node name="StickyPillar5" parent="Pillars" instance=ExtResource("5_16vco")]
-position = Vector2(324, 101)
+position = Vector2(326, 101)
 
 [node name="StickyPillar6" parent="Pillars" instance=ExtResource("5_16vco")]
-position = Vector2(273, 101)
+position = Vector2(276, 101)
 
 [node name="StickyPillar7" parent="Pillars" instance=ExtResource("5_16vco")]
-position = Vector2(225, 101)
+position = Vector2(226, 101)
 
 [node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
 position = Vector2(525, 324)

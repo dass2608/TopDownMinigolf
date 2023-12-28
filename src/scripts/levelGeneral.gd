@@ -1,6 +1,7 @@
 extends Node2D
 
 signal nextLevel
+signal cancelLevel
 
 @onready var movablePillarsEnabled = self.has_node("MovablePillars")
 @onready var LockXmovement = self.has_node("DisableXmovement")
@@ -22,3 +23,6 @@ func _physics_process(_delta):
 
 func _on_hole_body_entered(_body):
 	emit_signal("nextLevel")
+
+func _on_death_pad_triggered():
+	cancelLevel.emit()

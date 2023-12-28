@@ -39,6 +39,7 @@ func _draw():
 func loadLevel(levelName:String):
 	var level:Node2D = load("res://src/scenes/levels/" + levelName).instantiate()
 	level.connect(&"nextLevel", _onLevelCompleted)
+	level.cancelLevel.connect(func(): levelAborted.emit())
 	if level.has_node("PlayerStartPosition"):
 		$Player.position = level.get_node("PlayerStartPosition").position
 	
