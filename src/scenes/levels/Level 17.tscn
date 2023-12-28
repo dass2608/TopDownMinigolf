@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://p3ctqbgua8lb"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ehgcq"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="1_ihogm"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="2_st0dj"]
+[ext_resource type="PackedScene" uid="uid://bmvxmei61hw4d" path="res://src/scenes/levelComponents/DirectionPad.tscn" id="3_is0gp"]
+[ext_resource type="PackedScene" uid="uid://dj4nnvdrofh8b" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="4_pu8jg"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ehgcq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("1_ihogm")
+
+[node name="MovablePillars" type="Node2D" parent="."]
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="AccelerationPad" parent="Pillars" instance=ExtResource("3_is0gp")]
+position = Vector2(376, 324)
+strength = 5.0
+
+[node name="AccelerationPad2" parent="Pillars" instance=ExtResource("3_is0gp")]
+position = Vector2(528, 174)
+direction = 3
+strength = 5.0
+
+[node name="AccelerationPad3" parent="Pillars" instance=ExtResource("3_is0gp")]
+position = Vector2(676, 324)
+direction = 1
+strength = 5.0
+
+[node name="AccelerationPad4" parent="Pillars" instance=ExtResource("3_is0gp")]
+position = Vector2(526, 423)
+direction = 2
+strength = 5.0
+
+[node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
+position = Vector2(525, 324)
+scale = Vector2(3, 3)
+
+[node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(177, 425)
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

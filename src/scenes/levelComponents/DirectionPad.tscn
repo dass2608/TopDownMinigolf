@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmvxmei61hw4d"]
+
+[ext_resource type="Script" path="res://src/scripts/DirectionPad.gd" id="1_eaida"]
+[ext_resource type="Texture2D" uid="uid://dop70kllf3gfa" path="res://assets/direction-pad.svg" id="1_wxa5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
+size = Vector2(71.4286, 73.0159)
+
+[node name="AccelerationPad" type="Node2D"]
+script = ExtResource("1_eaida")
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+scale = Vector2(0.63, 0.63)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.793647, -3.78442e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_pldhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_wxa5q")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]
