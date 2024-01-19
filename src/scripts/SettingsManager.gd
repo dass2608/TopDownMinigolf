@@ -6,6 +6,7 @@ const CONFIG_FILE_PATH:String = "user://settings.cfg"
 
 const CONFIG_SECTION_HELPER_LINE:String = "helperLine"
 const CONFIG_SECTION_CONTROLS:String = "controls"
+const CONFIG_SECTION_OTHER:String = "other"
 
 var settings := {}
 
@@ -57,6 +58,7 @@ func setupSettings(configFile: ConfigFile) -> void:
 	settings.helperLineEnabled = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled")
 	settings.helperLineColor = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor")
 	settings.helperLineWidth = configFile.get_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth")
+	settings.customLevelsWarningConfirmed = configFile.get_value(CONFIG_SECTION_OTHER, "customLevelsWarningConfirmed")
 	emit_signal("settingsChanged", settings)
 
 func setSetting(key:String, value:Variant):
@@ -75,4 +77,5 @@ func saveSettings() -> void:
 	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineEnabled", settings.helperLineEnabled)
 	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineColor", settings.helperLineColor)
 	configFile.set_value(CONFIG_SECTION_HELPER_LINE, "helperLineWidth", settings.helperLineWidth)
+	configFile.set_value(CONFIG_SECTION_OTHER, "customLevelsWarningConfirmed", settings.customLevelsWarningConfirmed)
 	configFile.save(CONFIG_FILE_PATH)

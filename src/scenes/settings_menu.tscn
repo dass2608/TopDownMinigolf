@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://bguysfw3rg44s"]
+
+[ext_resource type="Script" path="res://src/scripts/SettingsMenu.gd" id="1_kb7gw"]
+[ext_resource type="Script" path="res://src/scripts/ColorPickerButtonHelperLineColor.gd" id="2_0oamf"]
+
+[node name="SettingsMenu" type="PanelContainer"]
+visible = false
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 1129.0
+offset_bottom = 627.0
+script = ExtResource("1_kb7gw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="EnableOnScreenButtons" type="CheckButton" parent="VBoxContainer/TabContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Enable On-Screen Buttons (recommended for mobile)"
+
+[node name="Helper Line" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Helper Line"]
+layout_mode = 0
+offset_right = 1110.0
+offset_bottom = 40.0
+
+[node name="CheckButtonEnableLine" type="CheckButton" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Enable Helper Line"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " Helper Line Width"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 5.0
+max_value = 25.0
+value = 10.0
+tick_count = 20
+
+[node name="HBoxContainerColor" type="HBoxContainer" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = " Helper Line Color"
+
+[node name="ColorPicker" type="ColorPickerButton" parent="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+color = Color(1, 1, 1, 1)
+script = ExtResource("2_0oamf")
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 26
+text = "Back"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Controls/EnableOnScreenButtons" to="." method="_on_enable_on_screen_buttons_pressed"]
+[connection signal="toggled" from="VBoxContainer/TabContainer/Helper Line/VBoxContainer/CheckButtonEnableLine" to="." method="_on_check_button_enable_line_toggled"]
+[connection signal="drag_ended" from="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="color_changed" from="VBoxContainer/TabContainer/Helper Line/VBoxContainer/HBoxContainerColor/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="VBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
