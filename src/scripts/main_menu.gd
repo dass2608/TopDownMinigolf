@@ -24,7 +24,6 @@ func getLevelArray() -> Array[String]:
 		return []
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var levelArray = getLevelArray()
 	for i in levelArray:
@@ -39,10 +38,13 @@ func _ready():
 func _on_button_play_pressed():
 	$MenuItems/PanelLevelselect.show()
 
-func _levelSelected(levelName:String):
+func _levelSelected(levelName:String, pathOverride = null):
 	var game = gameScene.instantiate()
 	game.loadSettings($SettingsManager.settings)
-	game.loadLevel(levelName)
+	if pathOverride != null:
+		game.loadLevel(levelName, pathOverride)
+	else:
+		game.loadLevel("res://src/scenes/levels/" + levelName)
 	game.connect(&"levelCompleted", _levelDone)
 	game.levelAborted.connect(_levelAborted)
 	game.levelRestarted.connect(_levelRestarted)
@@ -68,10 +70,13 @@ func _levelAborted():
 	$MenuItems/MenuButtons/LabelLevelComplete.text = "Level aborted!"
 	$MenuItems.show()
 
-func _levelRestarted(levelName):
+func _levelRestarted(levelName, pathOverride = null):
 	_levelAborted()
 	await get_tree().process_frame
-	_levelSelected(levelName)
+	if not pathOverride:
+		_levelSelected(levelName)
+	else:
+		_levelSelected(levelName, pathOverride)
 
 func _on_button_e_net_pressed():
 	$MenuItems/Credits/MainScreen.hide()
@@ -98,3 +103,33 @@ func _on_button_quit_pressed():
 
 func _on_button_settings_pressed():
 	$MenuItems/SettingsMenu.show()
+
+func _on_button_play_custom_pressed():
+	var fileDial:FileDialog = FileDialog.new()
+	fileDial.add_filter("*.tscn")
+	fileDial.use_native_dialog = true
+	fileDial.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	fileDial.access = FileDialog.ACCESS_FILESYSTEM
+	
+	fileDial.file_selected.connect(_customLevelSelect)
+	add_child(fileDial)
+	fileDial.show()
+
+func _customLevelSelect(path:String):
+	if $SettingsManager.getSetting("customLevelsWarningConfirmed"):
+		_levelSelected("Custom Level", path)
+	else:
+		$LoadCustomLevelWaringPanel.show()
+		$LoadCustomLevelWaringPanel.back.connect(func():
+			for i in $LoadCustomLevelWaringPanel.back.get_connections():
+				if i.signal.is_connected(i.callable):
+					i.signal.disconnect(i.callable)
+			for i in $LoadCustomLevelWaringPanel.confirm.get_connections():
+				if i.signal.is_connected(i.callable):
+					i.signal.disconnect(i.callable)
+			$LoadCustomLevelWaringPanel.hide()
+		)
+		$LoadCustomLevelWaringPanel.confirm.connect(func():
+			$LoadCustomLevelWaringPanel.hide()
+			$SettingsManager.setSetting("customLevelsWarningConfirmed", true)
+			_levelSelected("Custom Level", path))

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt2ji5sldefe3"]
+[gd_scene load_steps=7 format=3 uid="uid://dt2ji5sldefe3"]
 
 [ext_resource type="Texture2D" uid="uid://cxoq32by4sq7v" path="res://assets/menu-background.svg" id="1_0fhw5"]
 [ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_cyvbu"]
 [ext_resource type="Script" path="res://src/scripts/SettingsManager.gd" id="3_6563a"]
 [ext_resource type="Script" path="res://src/scripts/SettingsMenu.gd" id="3_fj6xf"]
 [ext_resource type="Script" path="res://src/scripts/ColorPickerButtonHelperLineColor.gd" id="3_xoaoq"]
+[ext_resource type="PackedScene" uid="uid://dhlgewfp0nqm6" path="res://src/scenes/LoadCustomLevelWarning.tscn" id="6_pl5e8"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_cyvbu")
@@ -36,9 +37,9 @@ text = "Top Down Minigolf"
 [node name="MenuButtons" type="VBoxContainer" parent="MenuItems"]
 layout_mode = 0
 offset_left = 257.0
-offset_top = 234.0
+offset_top = 215.0
 offset_right = 856.0
-offset_bottom = 480.0
+offset_bottom = 481.0
 
 [node name="LabelLevelComplete" type="Label" parent="MenuItems/MenuButtons"]
 layout_mode = 2
@@ -58,6 +59,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 44
 text = "Play"
+
+[node name="ButtonPlayCustom" type="Button" parent="MenuItems/MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Play Custom Level"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuItems/MenuButtons"]
 layout_mode = 2
@@ -301,7 +307,15 @@ text = "Back"
 [node name="SettingsManager" type="Node" parent="."]
 script = ExtResource("3_6563a")
 
+[node name="LoadCustomLevelWaringPanel" parent="." instance=ExtResource("6_pl5e8")]
+visible = false
+offset_left = 226.0
+offset_top = 178.0
+offset_right = 877.0
+offset_bottom = 534.0
+
 [connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlayCustom" to="." method="_on_button_play_custom_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MenuItems/ButtonAboutCredits" to="." method="_on_button_about_credits_pressed"]

@@ -2,7 +2,7 @@ extends Node2D
 
 signal levelCompleted(shots:int, levelname:String)
 signal levelAborted
-signal levelRestarted(levelname:String)
+signal levelRestarted(levelname:String, pathOverride:Variant)
 
 var settings:Dictionary = {}
 var enableXcontrolButtons:bool = true
@@ -12,6 +12,7 @@ var mousePosition:Vector2
 var mousePressed = false
 var shots:int = 0
 var levelname:String = ""
+var levelPath:String = ""
 
 func _unhandled_input(event):
 	#print("[INPUT] game.gd _unhandled_input: ", event)
@@ -36,9 +37,16 @@ func _draw():
 	if mousePressed and settings.helperLineEnabled:
 		draw_line(mousePosition, get_local_mouse_position(), settings.helperLineColor, settings.helperLineWidth, true)
 
-func loadLevel(levelName:String):
-	var level:Node2D = load("res://src/scenes/levels/" + levelName).instantiate()
-	level.connect(&"nextLevel", _onLevelCompleted)
+func loadLevel(levelName:String, levelPathOverride = null):
+	var level:Node2D
+	if levelPathOverride != null:
+		level = load(levelPathOverride).instantiate()
+		levelPath = levelPathOverride
+	else:
+		level = load(levelName).instantiate()
+		levelPath = ""
+	
+	level.nextLevel.connect(_onLevelCompleted)
 	level.cancelLevel.connect(func(): levelAborted.emit())
 	if level.has_node("PlayerStartPosition"):
 		$Player.position = level.get_node("PlayerStartPosition").position
@@ -75,7 +83,10 @@ func _on_button_main_menu_pressed():
 
 func _on_button_restart_level_pressed():
 	$GamePauseController.unpause()
-	levelRestarted.emit(levelname)
+	if levelPath == "":
+		levelRestarted.emit(levelname)
+	else:
+		levelRestarted.emit(levelname, levelPath)
 
 func _on_pause_button_pressed():
 	$GamePauseController.pause()

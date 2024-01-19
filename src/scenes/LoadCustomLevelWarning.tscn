@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhlgewfp0nqm6"]
+
+[ext_resource type="Script" path="res://src/scripts/LoadCustomLevelWarning.gd" id="1_wwdlg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngpl1"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[node name="LoadCustomLevelWaringPanel" type="PanelContainer"]
+offset_right = 621.0
+offset_bottom = 356.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ngpl1")
+script = ExtResource("1_wwdlg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "WARNING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelBody" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "When loading a custom Level, there might be Code executed eich might harm your device. When loading a level, you trust the creator, it is comparable to running an executable file on your device.
+DO NOT RUN LEVELS WHOSE CREATORS YOU DO NOT FULLY TRUST"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="ButtonContinue" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue on"
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Back to main menu"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

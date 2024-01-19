@@ -21,6 +21,10 @@ boot_splash/show_image=false
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 pauseGame={
