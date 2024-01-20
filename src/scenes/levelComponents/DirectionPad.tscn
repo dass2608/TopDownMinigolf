@@ -10,7 +10,7 @@ size = Vector2(80, 79)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
 size = Vector2(71.4286, 73.0159)
 
-[node name="DirectionPad" type="Node2D"]
+[node name="DirectionPad" type="Node2D" groups=["LevelEditorPropsEditable"]]
 script = ExtResource("1_eaida")
 
 [node name="Area2D" type="Area2D" parent="."]

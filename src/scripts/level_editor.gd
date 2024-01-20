@@ -7,8 +7,11 @@ const ACCELERATION_PAD = preload("res://src/scenes/levelComponents/AccelerationP
 const DEATH_PAD = preload("res://src/scenes/levelComponents/DeathPad.tscn")
 const LIGHTBLUE_PILLAR = preload("res://src/scenes/levelComponents/LightbluePillar.tscn")
 const DARKBLUE_PILLAR = preload("res://src/scenes/levelComponents/DarkbluePillar.tscn")
+const DIRECTION_PAD = preload("res://src/scenes/levelComponents/DirectionPad.tscn")
 
 const scaleFactor = 0.8
+
+var editableProsNode:Array[Node] = []
 
 func _ready():
 	var level = levelTemplateScene.instantiate()
@@ -16,6 +19,7 @@ func _ready():
 	level.scale = Vector2(scaleFactor, scaleFactor)
 	
 	%LevelContainer.add_child(level)
+	updateEditables()
 
 
 func _on_button_normal_wall_pressed():
@@ -53,3 +57,32 @@ func _on_button_darkblue_pillar_pressed():
 	var scene:Node2D = DARKBLUE_PILLAR.instantiate()
 	scene.global_position = Vector2(get_global_mouse_position().x, get_global_mouse_position().y + 100)
 	%LevelContainer.get_child(0).LevelEditorAddMovablePillar(scene)
+
+func _on_button_direction_pad_pressed():
+	var scene:Node2D = DIRECTION_PAD.instantiate()
+	scene.global_position = Vector2(get_global_mouse_position().x, get_global_mouse_position().y + 100)
+	%LevelContainer.get_child(0).LevelEditorAddMovablePillar(scene)
+	updateEditables()
+
+func updateEditables():
+	editableProsNode = []
+	for i in %EditablesConatiner.get_children():
+		i.queue_free()
+	# Wait until Nodes are destroyed
+	await get_tree().process_frame
+	editableProsNode = findNodesOfGroupRecursive(%LevelContainer, "LevelEditorPropsEditable")
+	
+	for i in editableProsNode:
+		var propertyList = i.get_property_list()
+		for j in propertyList.size():
+			#if propertyList[j].usage & 8199 != 0:
+			if propertyList[j].usage & (PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_SCRIPT_VARIABLE) == PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_SCRIPT_VARIABLE:
+				print(propertyList[j])
+
+func findNodesOfGroupRecursive(base:Node, group:String) -> Array[Node]:
+	var arr:Array[Node] = []
+	for i in base.get_children():
+		if i.is_in_group(group):
+			arr.append(i)
+		arr.append_array(findNodesOfGroupRecursive(i, group))
+	return arr
