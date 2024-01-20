@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj4nnvdrofh8b"]
+[gd_scene load_steps=4 format=3 uid="uid://dj4nnvdrofh8b"]
 
 [ext_resource type="Script" path="res://src/scripts/PlayerStartPosition.gd" id="1_ryy6p"]
 [ext_resource type="Texture2D" uid="uid://cu20xjfcsptvs" path="res://assets/player-spawn-indicator.svg" id="2_3v2xd"]
 
-[node name="PlayerStartPosition" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqkd"]
+
+[node name="PlayerStartPosition" type="Area2D"]
+collision_layer = 32768
+collision_mask = 32768
 script = ExtResource("1_ryy6p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 2)
 texture = ExtResource("2_3v2xd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wpqkd")

@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhtkn7x115y05"]
+[gd_scene load_steps=6 format=3 uid="uid://bhtkn7x115y05"]
 
 [ext_resource type="Texture2D" uid="uid://dribnc2173go5" path="res://assets/pillar-square-darkblue.svg" id="1_deret"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/levelEditorDragPillar.gd" id="1_spmwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcsyi"]
+size = Vector2(80, 79)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_42elt"]
 bounce = 0.1
@@ -9,6 +13,14 @@ bounce = 0.1
 size = Vector2(80, 79)
 
 [node name="StickyPillar" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_spmwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_fcsyi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 scale = Vector2(0.63, 0.63)
@@ -20,3 +32,5 @@ shape = SubResource("RectangleShape2D_pldhv")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_deret")
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]

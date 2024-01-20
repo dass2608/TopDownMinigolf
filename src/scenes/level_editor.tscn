@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cve74d6iy6vtg"]
+
+[ext_resource type="Script" path="res://src/scripts/level_editor.gd" id="1_3bapn"]
+[ext_resource type="Texture2D" uid="uid://dsg2swifmqfw8" path="res://assets/pillar-square-grey.svg" id="2_od0yh"]
+[ext_resource type="Texture2D" uid="uid://c0kert5uq21ui" path="res://assets/pillar-square-lime.svg" id="3_0xouq"]
+[ext_resource type="Texture2D" uid="uid://c8qoaegbiyo6f" path="res://assets/death-square.svg" id="4_2st3l"]
+[ext_resource type="Texture2D" uid="uid://4ech57lcjax6" path="res://assets/pillar-square-lightblue.svg" id="5_tk35w"]
+[ext_resource type="Texture2D" uid="uid://dribnc2173go5" path="res://assets/pillar-square-darkblue.svg" id="6_k3bhl"]
+[ext_resource type="Texture2D" uid="uid://dop70kllf3gfa" path="res://assets/direction-pad.svg" id="7_n3q13"]
+
+[node name="LevelEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_3bapn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 644.0
+
+[node name="TopBar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonNormalWall" type="TextureButton" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+texture_normal = ExtResource("2_od0yh")
+
+[node name="ButtonStickWall" type="TextureButton" parent="VBoxContainer/TopBar"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture_normal = ExtResource("2_od0yh")
+
+[node name="ButtonAcceleratePad" type="TextureButton" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+texture_normal = ExtResource("3_0xouq")
+
+[node name="ButtonDeathPad" type="TextureButton" parent="VBoxContainer/TopBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture_normal = ExtResource("4_2st3l")
+stretch_mode = 5
+
+[node name="ButtonLightbluePillar" type="TextureButton" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+texture_normal = ExtResource("5_tk35w")
+
+[node name="ButtonDarkbluePillar" type="TextureButton" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+texture_normal = ExtResource("6_k3bhl")
+
+[node name="ButtonDirectionPad" type="TextureButton" parent="VBoxContainer/TopBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture_normal = ExtResource("7_n3q13")
+stretch_mode = 5
+
+[node name="ButtonSaveLevel" type="Button" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Save
+"
+
+[node name="LevelContainer" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+mouse_filter = 1
+
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonNormalWall" to="." method="_on_button_normal_wall_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonStickWall" to="." method="_on_button_stick_wall_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonAcceleratePad" to="." method="_on_button_accelerate_pad_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonDeathPad" to="." method="_on_button_death_pad_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonLightbluePillar" to="." method="_on_button_lightblue_pillar_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonDarkbluePillar" to="." method="_on_button_darkblue_pillar_pressed"]

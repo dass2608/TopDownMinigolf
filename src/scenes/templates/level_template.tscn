@@ -19,8 +19,10 @@ texture = ExtResource("1_ihogm")
 [node name="Pillars" type="Node2D" parent="."]
 
 [node name="PlayerStartPosition" parent="." instance=ExtResource("4_pu8jg")]
+position = Vector2(175, 25)
 scale = Vector2(3, 3)
 
 [node name="Hole" parent="." instance=ExtResource("2_st0dj")]
+position = Vector2(76, 24)
 
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

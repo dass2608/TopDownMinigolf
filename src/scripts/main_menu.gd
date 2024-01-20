@@ -44,7 +44,7 @@ func _levelSelected(levelName:String, pathOverride = null):
 	if pathOverride != null:
 		game.loadLevel(levelName, pathOverride)
 	else:
-		game.loadLevel("res://src/scenes/levels/" + levelName)
+		game.loadLevel(levelName)
 	game.connect(&"levelCompleted", _levelDone)
 	game.levelAborted.connect(_levelAborted)
 	game.levelRestarted.connect(_levelRestarted)

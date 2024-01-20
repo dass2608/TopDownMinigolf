@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://svri45qysijp"]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_ljs1d"]
+[ext_resource type="Texture2D" uid="uid://cslsix476xuoy" path="res://assets/background.png" id="2_q6a2a"]
+[ext_resource type="PackedScene" uid="uid://dj4nnvdrofh8b" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="3_ycqgi"]
+[ext_resource type="PackedScene" uid="uid://dqyfxlpsw7r3g" path="res://src/scenes/levelComponents/hole.tscn" id="4_wer6c"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/hole.gd" id="5_y3yf7"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_ljs1d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("2_q6a2a")
+
+[node name="MovablePillars" type="Node2D" parent="."]
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="PlayerStartPosition" parent="." instance=ExtResource("3_ycqgi")]
+position = Vector2(175, 25)
+scale = Vector2(3, 3)
+
+[node name="Hole" parent="." instance=ExtResource("4_wer6c")]
+position = Vector2(76, 24)
+script = ExtResource("5_y3yf7")
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

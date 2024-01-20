@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmvxmei61hw4d"]
+[gd_scene load_steps=6 format=3 uid="uid://bmvxmei61hw4d"]
 
 [ext_resource type="Script" path="res://src/scripts/DirectionPad.gd" id="1_eaida"]
 [ext_resource type="Texture2D" uid="uid://dop70kllf3gfa" path="res://assets/direction-pad.svg" id="1_wxa5q"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/levelEditorDragPillar.gd" id="2_stnp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi8j2"]
+size = Vector2(80, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
 size = Vector2(71.4286, 73.0159)
 
 [node name="DirectionPad" type="Node2D"]
 script = ExtResource("1_eaida")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_stnp3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_vi8j2")
 
 [node name="StaticBody2D" type="Area2D" parent="."]
 scale = Vector2(0.63, 0.63)
@@ -20,4 +32,5 @@ shape = SubResource("RectangleShape2D_pldhv")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_wxa5q")
 
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]

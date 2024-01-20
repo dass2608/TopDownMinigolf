@@ -43,7 +43,7 @@ func loadLevel(levelName:String, levelPathOverride = null):
 		level = load(levelPathOverride).instantiate()
 		levelPath = levelPathOverride
 	else:
-		level = load(levelName).instantiate()
+		level = load("res://src/scenes/levels/" + levelName).instantiate()
 		levelPath = ""
 	
 	level.nextLevel.connect(_onLevelCompleted)

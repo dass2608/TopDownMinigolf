@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://qdgiwhaqn8dt"]
+[gd_scene load_steps=6 format=3 uid="uid://qdgiwhaqn8dt"]
 
 [ext_resource type="Script" path="res://src/scripts/DeathPad.gd" id="1_ftuv0"]
 [ext_resource type="Texture2D" uid="uid://c8qoaegbiyo6f" path="res://assets/death-square.svg" id="1_kjb62"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/levelEditorDragPillar.gd" id="2_i8k3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ism3"]
+size = Vector2(80, 79)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
 size = Vector2(55.5556, 53.9683)
@@ -9,16 +13,24 @@ size = Vector2(55.5556, 53.9683)
 [node name="DeathPad" type="Node2D"]
 script = ExtResource("1_ftuv0")
 
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_i8k3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_7ism3")
+
 [node name="StaticBody2D" type="Area2D" parent="."]
 scale = Vector2(0.63, 0.63)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.793652, -1.08802e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_pldhv")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_kjb62")
 
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
 [connection signal="body_entered" from="StaticBody2D" to="." method="_on_static_body_2d_body_entered"]
