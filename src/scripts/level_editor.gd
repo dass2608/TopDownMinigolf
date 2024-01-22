@@ -9,6 +9,8 @@ const LIGHTBLUE_PILLAR = preload("res://src/scenes/levelComponents/LightbluePill
 const DARKBLUE_PILLAR = preload("res://src/scenes/levelComponents/DarkbluePillar.tscn")
 const DIRECTION_PAD = preload("res://src/scenes/levelComponents/DirectionPad.tscn")
 
+const INSPECTOR_ITEM = preload("res://src/scenes/inspector_item.tscn")
+
 const scaleFactor = 0.8
 
 var editableProsNode:Array[Node] = []
@@ -61,7 +63,7 @@ func _on_button_darkblue_pillar_pressed():
 func _on_button_direction_pad_pressed():
 	var scene:Node2D = DIRECTION_PAD.instantiate()
 	scene.global_position = Vector2(get_global_mouse_position().x, get_global_mouse_position().y + 100)
-	%LevelContainer.get_child(0).LevelEditorAddMovablePillar(scene)
+	%LevelContainer.get_child(0).LevelEditorAddRegularPillar(scene)
 	updateEditables()
 
 func updateEditables():
@@ -74,10 +76,19 @@ func updateEditables():
 	
 	for i in editableProsNode:
 		var propertyList = i.get_property_list()
+		var inspectorItem:InspectorItem = INSPECTOR_ITEM.instantiate()
+		
+		# TODO: Get a name for the Direction Pad somehow
+		inspectorItem.setElementName("Direction Pad")
+		%EditablesConatiner.add_child(inspectorItem)
+		
 		for j in propertyList.size():
-			#if propertyList[j].usage & 8199 != 0:
+			# Get only @exported properties (hopefully)
 			if propertyList[j].usage & (PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_SCRIPT_VARIABLE) == PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_SCRIPT_VARIABLE:
-				print(propertyList[j])
+				if not propertyList[j].hint == PROPERTY_HINT_ENUM:
+					inspectorItem.add_property(propertyList[j].name, propertyList[j].type, func(arg): i[propertyList[j].name] = arg)
+				else:
+					inspectorItem.add_property(propertyList[j].name, propertyList[j].type, func(arg): i[propertyList[j].name] = arg, propertyList[j].hint_string.split(","))
 
 func findNodesOfGroupRecursive(base:Node, group:String) -> Array[Node]:
 	var arr:Array[Node] = []

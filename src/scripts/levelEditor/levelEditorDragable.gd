@@ -12,7 +12,6 @@ func _ready():
 
 func _on_input(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton:
-		event as InputEventMouseButton
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			dragging = true
 			#print("Mouse pressed")
