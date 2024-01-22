@@ -97,3 +97,29 @@ func findNodesOfGroupRecursive(base:Node, group:String) -> Array[Node]:
 			arr.append(i)
 		arr.append_array(findNodesOfGroupRecursive(i, group))
 	return arr
+
+
+func _on_button_save_level_pressed():
+	var fileDial:FileDialog = FileDialog.new()
+	fileDial.add_filter("*.tscn")
+	fileDial.use_native_dialog = true
+	fileDial.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	fileDial.access = FileDialog.ACCESS_FILESYSTEM
+	
+	fileDial.file_selected.connect(saveLevel)
+	add_child(fileDial)
+	fileDial.show()
+
+func saveLevel(path:String):
+	var scene = PackedScene.new()
+	var level = %LevelContainer.get_child(0).duplicate()
+	level.scale = Vector2(1, 1)
+	_setOwnerRecursive(level)
+	
+	scene.pack(level)
+	ResourceSaver.save(scene, path)
+
+func _setOwnerRecursive(node:Node):
+	for i in node.get_children():
+		i.set_owner(node)
+		_setOwnerRecursive(i)

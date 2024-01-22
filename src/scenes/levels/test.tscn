@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_32hvs"]
+[ext_resource type="Texture2D" path="res://assets/background.png" id="2_cm6cd"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="3_pnll5"]
+[ext_resource type="Script" path="res://src/scripts/PlayerStartPosition.gd" id="4_ia8ai"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/hole.tscn" id="5_cxab5"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/hole.gd" id="6_abgm1"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_32hvs")
+editorMode = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("2_cm6cd")
+
+[node name="MovablePillars" type="Node2D" parent="."]
+
+[node name="Pillars" type="Node2D" parent="."]
+
+[node name="PlayerStartPosition" type="Area2D" parent="." instance=ExtResource("3_pnll5")]
+position = Vector2(175, 25)
+scale = Vector2(3, 3)
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("4_ia8ai")
+
+[node name="Hole" type="Area2D" parent="." instance=ExtResource("5_cxab5")]
+position = Vector2(76, 24)
+script = ExtResource("6_abgm1")
+
+[connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

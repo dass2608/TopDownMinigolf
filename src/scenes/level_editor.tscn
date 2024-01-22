@@ -66,6 +66,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
 text = "Save
 "
 
@@ -99,3 +100,4 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonLightbluePillar" to="." method="_on_button_lightblue_pillar_pressed"]
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonDarkbluePillar" to="." method="_on_button_darkblue_pillar_pressed"]
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonDirectionPad" to="." method="_on_button_direction_pad_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonSaveLevel" to="." method="_on_button_save_level_pressed"]
