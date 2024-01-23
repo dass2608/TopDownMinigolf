@@ -1,6 +1,7 @@
 extends Node
 
 const gameScene = preload("res://src/scenes/game.tscn")
+const levelEditorScene = preload("res://src/scenes/level_editor.tscn")
 
 func getLevelArray() -> Array[String]:
 	var files:Array[String] = []
@@ -133,3 +134,22 @@ func _customLevelSelect(path:String):
 			$LoadCustomLevelWaringPanel.hide()
 			$SettingsManager.setSetting("customLevelsWarningConfirmed", true)
 			_levelSelected("Custom Level", path))
+
+func _on_button_level_editor_pressed():
+	if get_node("/root").has_node("LevelEditor"):
+		get_node("/root/LevelEditor").show()
+		$MenuItems.hide()
+		return
+	
+	var levelEditor = levelEditorScene.instantiate()
+	levelEditor.exited.connect(func():
+		levelEditor.queue_free()
+		$MenuItems.show()
+	)
+	
+	levelEditor.playLevel.connect(func(path:String):
+		_levelSelected("Custom Editor Level", path)
+	)
+	
+	get_node("/root").add_child(levelEditor)
+	$MenuItems.hide()

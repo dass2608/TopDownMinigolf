@@ -70,6 +70,20 @@ theme_override_font_sizes/font_size = 32
 text = "Save
 "
 
+[node name="ButtonPlay" type="Button" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+text = "Save & Quit"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -101,3 +115,5 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonDarkbluePillar" to="." method="_on_button_darkblue_pillar_pressed"]
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonDirectionPad" to="." method="_on_button_direction_pad_pressed"]
 [connection signal="pressed" from="VBoxContainer/TopBar/ButtonSaveLevel" to="." method="_on_button_save_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/TopBar/ButtonQuit" to="." method="_on_button_quit_pressed"]

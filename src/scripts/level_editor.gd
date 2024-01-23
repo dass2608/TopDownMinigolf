@@ -1,5 +1,8 @@
 extends Control
 
+signal exited
+signal playLevel(path:String)
+
 const levelTemplateScene = preload("res://src/scenes/templates/levelEditorTemplate.tscn")
 const greyPillarScene = preload("res://src/scenes/levelComponents/GrayPillar.tscn")
 const BLACK_PILLAR = preload("res://src/scenes/levelComponents/BlackPillar.tscn")
@@ -14,6 +17,7 @@ const INSPECTOR_ITEM = preload("res://src/scenes/inspector_item.tscn")
 const scaleFactor = 0.8
 
 var editableProsNode:Array[Node] = []
+var currentPath:String = ""
 
 func _ready():
 	var level = levelTemplateScene.instantiate()
@@ -101,6 +105,10 @@ func findNodesOfGroupRecursive(base:Node, group:String) -> Array[Node]:
 
 
 func _on_button_save_level_pressed():
+	if currentPath != "":
+		saveLevel(currentPath)
+		return
+	
 	var fileDial:FileDialog = FileDialog.new()
 	fileDial.add_filter("*.tscn")
 	fileDial.use_native_dialog = true
@@ -108,10 +116,11 @@ func _on_button_save_level_pressed():
 	fileDial.access = FileDialog.ACCESS_FILESYSTEM
 	
 	fileDial.file_selected.connect(saveLevel)
+	fileDial.file_selected.connect(func(path:String): currentPath = path)
 	add_child(fileDial)
 	fileDial.show()
 
-func saveLevel(path:String):
+func saveLevel(path:String) -> String:
 	var scene = PackedScene.new()
 	var level = %LevelContainer.get_child(0).duplicate()
 	level.editorMode = false
@@ -120,9 +129,31 @@ func saveLevel(path:String):
 	
 	scene.pack(level)
 	ResourceSaver.save(scene, path)
+	return path
 
 func _setOwnerRecursive(node:Node, newOwner:Node):
 	for i in node.get_children():
 		i.owner = newOwner
 		#print("Set owner of " + str(node) + " to " + str(newOwner))
 		_setOwnerRecursive(i, newOwner)
+
+
+func _on_button_quit_pressed():
+	_on_button_save_level_pressed()
+	exited.emit()
+
+func _on_button_play_pressed():
+	hide()
+	
+	if currentPath != "":
+		playLevel.emit(currentPath)
+		return
+	var fileDial:FileDialog = FileDialog.new()
+	fileDial.add_filter("*.tscn")
+	fileDial.use_native_dialog = true
+	fileDial.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	fileDial.access = FileDialog.ACCESS_FILESYSTEM
+	
+	fileDial.file_selected.connect(func(path:String): playLevel.emit(path))
+	add_child(fileDial)
+	fileDial.show()

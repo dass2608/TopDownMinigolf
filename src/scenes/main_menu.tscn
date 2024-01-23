@@ -64,6 +64,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "Play Custom Level"
 
+[node name="ButtonLevelEditor" type="Button" parent="MenuItems/MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Level Editor (Beta)"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuItems/MenuButtons"]
 layout_mode = 2
 alignment = 1
@@ -247,6 +252,7 @@ offset_bottom = 534.0
 
 [connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/ButtonPlayCustom" to="." method="_on_button_play_custom_pressed"]
+[connection signal="pressed" from="MenuItems/MenuButtons/ButtonLevelEditor" to="." method="_on_button_level_editor_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="MenuItems/MenuButtons/HBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="MenuItems/ButtonAboutCredits" to="." method="_on_button_about_credits_pressed"]
