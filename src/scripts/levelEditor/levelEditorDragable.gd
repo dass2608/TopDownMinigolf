@@ -4,14 +4,15 @@ extends Area2D
 var dragging:bool = false
 
 func _input(event):
-	if event is InputEventMouseMotion and dragging:
+	if event is InputEventMouseMotion and dragging and get_parent().editorMode:
 		position = get_parent().get_local_mouse_position()
 
 func _ready():
-	input_event.connect(_on_input)
+	if get_parent().editorMode:
+		input_event.connect(_on_input)
 
 func _on_input(_viewport: Node, event: InputEvent, _shape_idx: int):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and get_parent().editorMode:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			dragging = true
 			#print("Mouse pressed")

@@ -11,7 +11,7 @@ func _ready():
 	input_event.connect(_on_input)
 
 func _on_input(_viewport: Node, event: InputEvent, _shape_idx: int):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and get_parent().get_parent().get_parent().editorMode:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			dragging = true
 			get_viewport().set_input_as_handled()
