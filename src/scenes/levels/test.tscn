@@ -1,35 +1,191 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=27 format=3]
 
-[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_32hvs"]
-[ext_resource type="Texture2D" path="res://assets/background.png" id="2_cm6cd"]
-[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="3_pnll5"]
-[ext_resource type="Script" path="res://src/scripts/PlayerStartPosition.gd" id="4_ia8ai"]
-[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/hole.tscn" id="5_cxab5"]
-[ext_resource type="Script" path="res://src/scripts/levelEditor/hole.gd" id="6_abgm1"]
+[ext_resource type="Script" path="res://src/scripts/levelGeneral.gd" id="1_hlpql"]
+[ext_resource type="Texture2D" path="res://assets/background.png" id="2_7i6kk"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/DeathPad.tscn" id="3_1t56l"]
+[ext_resource type="Script" path="res://src/scripts/DeathPad.gd" id="4_qqasm"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/levelEditorDragPillar.gd" id="5_0ehe4"]
+[ext_resource type="Texture2D" path="res://assets/death-square.svg" id="6_mw28q"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/AccelerationPad.tscn" id="7_6hkig"]
+[ext_resource type="Script" path="res://src/scripts/LimePillar.gd" id="8_i2nhm"]
+[ext_resource type="Texture2D" path="res://assets/pillar-square-lime.svg" id="9_rfjcp"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/DirectionPad.tscn" id="10_7ypm1"]
+[ext_resource type="Script" path="res://src/scripts/DirectionPad.gd" id="11_k6wie"]
+[ext_resource type="Texture2D" path="res://assets/direction-pad.svg" id="12_d7e60"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/PlayerStartPosition.tscn" id="13_w53yf"]
+[ext_resource type="Script" path="res://src/scripts/PlayerStartPosition.gd" id="14_pjrnb"]
+[ext_resource type="Texture2D" path="res://assets/player-spawn-indicator.svg" id="15_ywouj"]
+[ext_resource type="PackedScene" path="res://src/scenes/levelComponents/hole.tscn" id="16_qkr30"]
+[ext_resource type="Script" path="res://src/scripts/levelEditor/hole.gd" id="17_iim0y"]
+[ext_resource type="Texture2D" path="res://assets/hole.svg" id="18_ssf2w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ism3"]
+size = Vector2(80, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
+size = Vector2(55.5556, 53.9683)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lfn6"]
+size = Vector2(80, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkiiw"]
+size = Vector2(80, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi8j2"]
+size = Vector2(80, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyxuk"]
+size = Vector2(71.4286, 73.0159)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpqkd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ynnk"]
+radius = 12.0416
 
 [node name="LevelTemplate" type="Node2D"]
-script = ExtResource("1_32hvs")
-editorMode = true
+script = ExtResource("1_hlpql")
+editorMode = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_top = -1.0
 offset_right = 1154.0
 offset_bottom = 648.0
-texture = ExtResource("2_cm6cd")
+texture = ExtResource("2_7i6kk")
 
 [node name="MovablePillars" type="Node2D" parent="."]
 
 [node name="Pillars" type="Node2D" parent="."]
 
-[node name="PlayerStartPosition" type="Area2D" parent="." instance=ExtResource("3_pnll5")]
+[node name="DeathPad" type="Node2D" parent="Pillars" groups=["deathPad"] instance=ExtResource("3_1t56l")]
+position = Vector2(368.219, 144.69)
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_qqasm")
+
+[node name="Area2D" type="Area2D" parent="Pillars/DeathPad"]
+script = ExtResource("5_0ehe4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/DeathPad/Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_7ism3")
+
+[node name="StaticBody2D" type="Area2D" parent="Pillars/DeathPad"]
+scale = Vector2(0.63, 0.63)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/DeathPad/StaticBody2D"]
+position = Vector2(-0.793652, -1.08802e-06)
+shape = SubResource("RectangleShape2D_pldhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pillars/DeathPad/StaticBody2D"]
+texture = ExtResource("6_mw28q")
+
+[node name="_Node2D_2" type="Node2D" parent="Pillars" groups=["deathPad"] instance=ExtResource("3_1t56l")]
+position = Vector2(380.712, 175.578)
+scale = Vector2(1.25, 1.25)
+script = ExtResource("4_qqasm")
+
+[node name="Area2D" type="Area2D" parent="Pillars/_Node2D_2"]
+script = ExtResource("5_0ehe4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/_Node2D_2/Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_7ism3")
+
+[node name="StaticBody2D" type="Area2D" parent="Pillars/_Node2D_2"]
+scale = Vector2(0.63, 0.63)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/_Node2D_2/StaticBody2D"]
+position = Vector2(-0.793652, -1.08802e-06)
+shape = SubResource("RectangleShape2D_pldhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pillars/_Node2D_2/StaticBody2D"]
+texture = ExtResource("6_mw28q")
+
+[node name="AccelerationPad" type="Node2D" parent="Pillars" instance=ExtResource("7_6hkig")]
+position = Vector2(269.589, 143.375)
+
+[node name="Area2D" type="Area2D" parent="Pillars/AccelerationPad"]
+script = ExtResource("5_0ehe4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/AccelerationPad/Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_0lfn6")
+
+[node name="StaticBody2D" type="Area2D" parent="Pillars/AccelerationPad"]
+scale = Vector2(0.63, 0.63)
+monitorable = false
+script = ExtResource("8_i2nhm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/AccelerationPad/StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_wkiiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pillars/AccelerationPad/StaticBody2D"]
+texture = ExtResource("9_rfjcp")
+
+[node name="DirectionPad" type="Node2D" parent="Pillars" groups=["LevelEditorPropsEditable"] instance=ExtResource("10_7ypm1")]
+position = Vector2(678.575, 159.805)
+script = ExtResource("11_k6wie")
+direction = 2
+strength = 5.0
+nullifySpeed = true
+
+[node name="Area2D" type="Area2D" parent="Pillars/DirectionPad"]
+script = ExtResource("5_0ehe4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/DirectionPad/Area2D"]
+position = Vector2(0, -0.315)
+scale = Vector2(0.63, 0.63)
+shape = SubResource("RectangleShape2D_vi8j2")
+
+[node name="StaticBody2D" type="Area2D" parent="Pillars/DirectionPad"]
+rotation = -1.5708
+scale = Vector2(0.63, 0.63)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillars/DirectionPad/StaticBody2D"]
+position = Vector2(-0.793647, -3.78442e-06)
+shape = SubResource("RectangleShape2D_hyxuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pillars/DirectionPad/StaticBody2D"]
+modulate = Color(1, 0.545098, 1, 1)
+texture = ExtResource("12_d7e60")
+
+[node name="PlayerStartPosition" type="Area2D" parent="." instance=ExtResource("13_w53yf")]
 position = Vector2(175, 25)
 scale = Vector2(3, 3)
 collision_layer = 32768
 collision_mask = 32768
-script = ExtResource("4_ia8ai")
+script = ExtResource("14_pjrnb")
 
-[node name="Hole" type="Area2D" parent="." instance=ExtResource("5_cxab5")]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerStartPosition"]
+position = Vector2(2, 2)
+texture = ExtResource("15_ywouj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStartPosition"]
+shape = SubResource("RectangleShape2D_wpqkd")
+
+[node name="Hole" type="Area2D" parent="." instance=ExtResource("16_qkr30")]
 position = Vector2(76, 24)
-script = ExtResource("6_abgm1")
+script = ExtResource("17_iim0y")
 
+[node name="Sprite2D" type="Sprite2D" parent="Hole"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_ssf2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
+shape = SubResource("CircleShape2D_6ynnk")
+
+[connection signal="input_event" from="Pillars/DeathPad/Area2D" to="Pillars/DeathPad/Area2D" method="_on_input_event"]
+[connection signal="body_entered" from="Pillars/DeathPad/StaticBody2D" to="Pillars/DeathPad" method="_on_static_body_2d_body_entered"]
+[connection signal="input_event" from="Pillars/_Node2D_2/Area2D" to="Pillars/_Node2D_2/Area2D" method="_on_input_event"]
+[connection signal="body_entered" from="Pillars/_Node2D_2/StaticBody2D" to="Pillars/_Node2D_2" method="_on_static_body_2d_body_entered"]
+[connection signal="input_event" from="Pillars/AccelerationPad/Area2D" to="Pillars/AccelerationPad/Area2D" method="_on_input_event"]
+[connection signal="body_entered" from="Pillars/AccelerationPad/StaticBody2D" to="Pillars/AccelerationPad/StaticBody2D" method="_on_body_entered"]
+[connection signal="input_event" from="Pillars/DirectionPad/Area2D" to="Pillars/DirectionPad/Area2D" method="_on_input_event"]
+[connection signal="body_entered" from="Pillars/DirectionPad/StaticBody2D" to="Pillars/DirectionPad" method="_on_static_body_2d_body_entered"]
 [connection signal="body_entered" from="Hole" to="." method="_on_hole_body_entered"]

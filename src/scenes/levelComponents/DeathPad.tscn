@@ -10,7 +10,7 @@ size = Vector2(80, 79)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pldhv"]
 size = Vector2(55.5556, 53.9683)
 
-[node name="DeathPad" type="Node2D"]
+[node name="DeathPad" type="Node2D" groups=["deathPad"]]
 script = ExtResource("1_ftuv0")
 
 [node name="Area2D" type="Area2D" parent="."]

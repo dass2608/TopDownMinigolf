@@ -113,13 +113,17 @@ func _on_button_save_level_pressed():
 func saveLevel(path:String):
 	var scene = PackedScene.new()
 	var level = %LevelContainer.get_child(0).duplicate()
+	level.editorMode = false
 	level.scale = Vector2(1, 1)
-	_setOwnerRecursive(level)
+	_setOwnerRecursive(level, level)
 	
 	scene.pack(level)
 	ResourceSaver.save(scene, path)
 
-func _setOwnerRecursive(node:Node):
+func _setOwnerRecursive(node:Node, newOwner:Node):
 	for i in node.get_children():
-		i.set_owner(node)
-		_setOwnerRecursive(i)
+		i.owner = newOwner
+		if i.is_in_group("deathPad"):
+			i.connect(&"triggered", newOwner._on_death_pad_triggered)
+		#print("Set owner of " + str(node) + " to " + str(newOwner))
+		_setOwnerRecursive(i, newOwner)
