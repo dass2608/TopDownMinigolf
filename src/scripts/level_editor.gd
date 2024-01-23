@@ -46,6 +46,7 @@ func _on_button_death_pad_pressed():
 	var scene:Node2D = DEATH_PAD.instantiate()
 	scene.global_position = Vector2(get_global_mouse_position().x, get_global_mouse_position().y + 100)
 	scene.scale = Vector2(1.25, 1.25)
+	scene.triggered.connect(%LevelContainer.get_child(0)._on_death_pad_triggered, CONNECT_PERSIST)
 	%LevelContainer.get_child(0).LevelEditorAddRegularPillar(scene)
 
 
@@ -123,7 +124,5 @@ func saveLevel(path:String):
 func _setOwnerRecursive(node:Node, newOwner:Node):
 	for i in node.get_children():
 		i.owner = newOwner
-		if i.is_in_group("deathPad"):
-			i.connect(&"triggered", newOwner._on_death_pad_triggered)
 		#print("Set owner of " + str(node) + " to " + str(newOwner))
 		_setOwnerRecursive(i, newOwner)
